@@ -8,9 +8,8 @@
       "MINI MASCULINO",
       "PRE MINI MASCULINO"
     ],
-    "categorias_fallidas": [],
     "total_grupos": 125,
-    "fecha_scraping": "2025-06-09 07:33:44"
+    "fecha_scraping": "2025-06-13 08:38:58"
   },
   "datos": [
     {
@@ -373,13 +372,13 @@
             {
               "posicion": 1,
               "equipo": "TRISTAN SUAREZ",
-              "partidos_jugados": 10,
-              "partidos_ganados": 9,
+              "partidos_jugados": 11,
+              "partidos_ganados": 10,
               "partidos_perdidos": 1,
-              "puntos_favor": 647,
-              "puntos_contra": 430,
-              "puntos_totales": 19,
-              "racha": 5
+              "puntos_favor": 692,
+              "puntos_contra": 473,
+              "puntos_totales": 21,
+              "racha": 6
             },
             {
               "posicion": 2,
@@ -395,13 +394,13 @@
             {
               "posicion": 3,
               "equipo": "MONTE GRANDE A  ROJO",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 6,
-              "partidos_perdidos": 3,
-              "puntos_favor": 593,
-              "puntos_contra": 504,
-              "puntos_totales": 15,
-              "racha": 4
+              "partidos_perdidos": 4,
+              "puntos_favor": 636,
+              "puntos_contra": 549,
+              "puntos_totales": 16,
+              "racha": -1
             },
             {
               "posicion": 4,
@@ -898,24 +897,24 @@
             {
               "posicion": 2,
               "equipo": "SOC.BECCAR",
-              "partidos_jugados": 11,
-              "partidos_ganados": 9,
+              "partidos_jugados": 12,
+              "partidos_ganados": 10,
               "partidos_perdidos": 2,
-              "puntos_favor": 939,
-              "puntos_contra": 570,
-              "puntos_totales": 20,
-              "racha": -1
+              "puntos_favor": 1013,
+              "puntos_contra": 616,
+              "puntos_totales": 22,
+              "racha": 1
             },
             {
               "posicion": 3,
               "equipo": "UNION VECINAL DE MUNRO",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 7,
-              "partidos_perdidos": 4,
-              "puntos_favor": 770,
-              "puntos_contra": 598,
-              "puntos_totales": 18,
-              "racha": 3
+              "partidos_perdidos": 5,
+              "puntos_favor": 816,
+              "puntos_contra": 672,
+              "puntos_totales": 19,
+              "racha": -1
             },
             {
               "posicion": 4,
@@ -980,35 +979,35 @@
             {
               "posicion": 1,
               "equipo": "SAN FERNANDO AZUL (A)",
-              "partidos_jugados": 11,
-              "partidos_ganados": 10,
+              "partidos_jugados": 12,
+              "partidos_ganados": 11,
               "partidos_perdidos": 1,
-              "puntos_favor": 802,
-              "puntos_contra": 521,
-              "puntos_totales": 21,
-              "racha": 2
+              "puntos_favor": 919,
+              "puntos_contra": 552,
+              "puntos_totales": 23,
+              "racha": 3
             },
             {
               "posicion": 2,
               "equipo": "C S D PRESIDENTE DERQUI",
-              "partidos_jugados": 11,
-              "partidos_ganados": 10,
+              "partidos_jugados": 12,
+              "partidos_ganados": 11,
               "partidos_perdidos": 1,
-              "puntos_favor": 860,
-              "puntos_contra": 565,
-              "puntos_totales": 21,
-              "racha": 8
+              "puntos_favor": 919,
+              "puntos_contra": 620,
+              "puntos_totales": 23,
+              "racha": 9
             },
             {
               "posicion": 3,
               "equipo": "CAZA Y PESCA AZUL A",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 8,
-              "partidos_perdidos": 3,
-              "puntos_favor": 981,
-              "puntos_contra": 547,
-              "puntos_totales": 19,
-              "racha": -1
+              "partidos_perdidos": 4,
+              "puntos_favor": 1036,
+              "puntos_contra": 606,
+              "puntos_totales": 20,
+              "racha": -2
             },
             {
               "posicion": 4,
@@ -1057,13 +1056,13 @@
             {
               "posicion": 8,
               "equipo": "BELLA VISTA",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 0,
-              "partidos_perdidos": 11,
-              "puntos_favor": 376,
-              "puntos_contra": 1104,
-              "puntos_totales": 11,
-              "racha": -11
+              "partidos_perdidos": 12,
+              "puntos_favor": 407,
+              "puntos_contra": 1221,
+              "puntos_totales": 12,
+              "racha": -12
             }
           ]
         },
@@ -1165,36 +1164,36 @@
           "clasificacion": [
             {
               "posicion": 1,
-              "equipo": "ARQUITECTURA NEGRO  A",
+              "equipo": "EL TALAR",
               "partidos_jugados": 10,
-              "partidos_ganados": 8,
-              "partidos_perdidos": 2,
-              "puntos_favor": 860,
-              "puntos_contra": 636,
-              "puntos_totales": 18,
-              "racha": 4
+              "partidos_ganados": 9,
+              "partidos_perdidos": 1,
+              "puntos_favor": 698,
+              "puntos_contra": 525,
+              "puntos_totales": 19,
+              "racha": 9
             },
             {
               "posicion": 2,
-              "equipo": "EL TALAR",
-              "partidos_jugados": 9,
-              "partidos_ganados": 8,
+              "equipo": "PINOCHO",
+              "partidos_jugados": 10,
+              "partidos_ganados": 9,
               "partidos_perdidos": 1,
-              "puntos_favor": 628,
-              "puntos_contra": 457,
-              "puntos_totales": 17,
-              "racha": 8
+              "puntos_favor": 798,
+              "puntos_contra": 523,
+              "puntos_totales": 19,
+              "racha": 3
             },
             {
               "posicion": 3,
-              "equipo": "PINOCHO",
-              "partidos_jugados": 9,
+              "equipo": "ARQUITECTURA NEGRO  A",
+              "partidos_jugados": 11,
               "partidos_ganados": 8,
-              "partidos_perdidos": 1,
-              "puntos_favor": 695,
-              "puntos_contra": 487,
-              "puntos_totales": 17,
-              "racha": 2
+              "partidos_perdidos": 3,
+              "puntos_favor": 928,
+              "puntos_contra": 706,
+              "puntos_totales": 19,
+              "racha": -1
             },
             {
               "posicion": 4,
@@ -1209,6 +1208,17 @@
             },
             {
               "posicion": 5,
+              "equipo": "ALL BOYS",
+              "partidos_jugados": 10,
+              "partidos_ganados": 2,
+              "partidos_perdidos": 8,
+              "puntos_favor": 580,
+              "puntos_contra": 704,
+              "puntos_totales": 12,
+              "racha": -4
+            },
+            {
+              "posicion": 6,
               "equipo": "ARGENTINOS JUNIORS",
               "partidos_jugados": 10,
               "partidos_ganados": 2,
@@ -1217,17 +1227,6 @@
               "puntos_contra": 713,
               "puntos_totales": 12,
               "racha": 1
-            },
-            {
-              "posicion": 6,
-              "equipo": "ALL BOYS",
-              "partidos_jugados": 9,
-              "partidos_ganados": 2,
-              "partidos_perdidos": 7,
-              "puntos_favor": 544,
-              "puntos_contra": 601,
-              "puntos_totales": 11,
-              "racha": -3
             },
             {
               "posicion": 7,
@@ -1248,13 +1247,13 @@
             {
               "posicion": 1,
               "equipo": "FERROCARRIL OESTE BLANCO (B)",
-              "partidos_jugados": 10,
-              "partidos_ganados": 9,
+              "partidos_jugados": 11,
+              "partidos_ganados": 10,
               "partidos_perdidos": 1,
-              "puntos_favor": 707,
-              "puntos_contra": 341,
-              "puntos_totales": 19,
-              "racha": 4
+              "puntos_favor": 782,
+              "puntos_contra": 372,
+              "puntos_totales": 21,
+              "racha": 5
             },
             {
               "posicion": 2,
@@ -1281,13 +1280,13 @@
             {
               "posicion": 4,
               "equipo": "ARQUITECTURA BLANCO  B",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 5,
-              "partidos_perdidos": 4,
-              "puntos_favor": 456,
-              "puntos_contra": 476,
-              "puntos_totales": 14,
-              "racha": 1
+              "partidos_perdidos": 5,
+              "puntos_favor": 487,
+              "puntos_contra": 551,
+              "puntos_totales": 15,
+              "racha": -1
             },
             {
               "posicion": 5,
@@ -1330,24 +1329,24 @@
             {
               "posicion": 1,
               "equipo": "FERROCARRIL OESTE VERDE (A)",
-              "partidos_jugados": 9,
-              "partidos_ganados": 9,
+              "partidos_jugados": 10,
+              "partidos_ganados": 10,
               "partidos_perdidos": 0,
-              "puntos_favor": 1041,
-              "puntos_contra": 350,
-              "puntos_totales": 18,
-              "racha": 9
+              "puntos_favor": 1190,
+              "puntos_contra": 371,
+              "puntos_totales": 20,
+              "racha": 10
             },
             {
               "posicion": 2,
               "equipo": "SAN LORENZO AZUL",
-              "partidos_jugados": 10,
-              "partidos_ganados": 7,
+              "partidos_jugados": 11,
+              "partidos_ganados": 8,
               "partidos_perdidos": 3,
-              "puntos_favor": 649,
-              "puntos_contra": 599,
-              "puntos_totales": 17,
-              "racha": 2
+              "puntos_favor": 737,
+              "puntos_contra": 664,
+              "puntos_totales": 19,
+              "racha": 3
             },
             {
               "posicion": 3,
@@ -1363,24 +1362,24 @@
             {
               "posicion": 4,
               "equipo": "PEDRO ECHAGUE AZUL A",
-              "partidos_jugados": 10,
+              "partidos_jugados": 11,
               "partidos_ganados": 4,
-              "partidos_perdidos": 6,
-              "puntos_favor": 531,
-              "puntos_contra": 703,
-              "puntos_totales": 14,
-              "racha": 1
+              "partidos_perdidos": 7,
+              "puntos_favor": 596,
+              "puntos_contra": 791,
+              "puntos_totales": 15,
+              "racha": -1
             },
             {
               "posicion": 5,
               "equipo": "MACABI",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 3,
-              "partidos_perdidos": 6,
-              "puntos_favor": 437,
-              "puntos_contra": 704,
-              "puntos_totales": 12,
-              "racha": -2
+              "partidos_perdidos": 7,
+              "puntos_favor": 458,
+              "puntos_contra": 853,
+              "puntos_totales": 13,
+              "racha": -3
             },
             {
               "posicion": 6,
@@ -1505,13 +1504,13 @@
             {
               "posicion": 2,
               "equipo": "CLUB ATLETICO HURACAN DE PARQUE PATRICIOS",
-              "partidos_jugados": 10,
-              "partidos_ganados": 8,
+              "partidos_jugados": 11,
+              "partidos_ganados": 9,
               "partidos_perdidos": 2,
-              "puntos_favor": 441,
-              "puntos_contra": 477,
-              "puntos_totales": 18,
-              "racha": 3
+              "puntos_favor": 495,
+              "puntos_contra": 511,
+              "puntos_totales": 20,
+              "racha": 4
             },
             {
               "posicion": 3,
@@ -1560,13 +1559,13 @@
             {
               "posicion": 7,
               "equipo": "NUEVA CHICAGO",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 1,
-              "partidos_perdidos": 8,
-              "puntos_favor": 325,
-              "puntos_contra": 606,
-              "puntos_totales": 10,
-              "racha": -3
+              "partidos_perdidos": 9,
+              "puntos_favor": 359,
+              "puntos_contra": 660,
+              "puntos_totales": 11,
+              "racha": -4
             }
           ]
         },
@@ -1751,13 +1750,13 @@
             {
               "posicion": 1,
               "equipo": "ESTUDIANTIL PORTEÑO \"A\"",
-              "partidos_jugados": 11,
-              "partidos_ganados": 11,
+              "partidos_jugados": 12,
+              "partidos_ganados": 12,
               "partidos_perdidos": 0,
-              "puntos_favor": 980,
-              "puntos_contra": 510,
-              "puntos_totales": 22,
-              "racha": 11
+              "puntos_favor": 1081,
+              "puntos_contra": 550,
+              "puntos_totales": 24,
+              "racha": 12
             },
             {
               "posicion": 2,
@@ -1828,13 +1827,13 @@
             {
               "posicion": 8,
               "equipo": "CENTRO ESPAÑOL",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 0,
-              "partidos_perdidos": 11,
-              "puntos_favor": 429,
-              "puntos_contra": 856,
-              "puntos_totales": 11,
-              "racha": -11
+              "partidos_perdidos": 12,
+              "puntos_favor": 469,
+              "puntos_contra": 957,
+              "puntos_totales": 12,
+              "racha": -12
             }
           ]
         },
@@ -2115,8 +2114,8 @@
               "partidos_jugados": 11,
               "partidos_ganados": 11,
               "partidos_perdidos": 0,
-              "puntos_favor": 784,
-              "puntos_contra": 474,
+              "puntos_favor": 831,
+              "puntos_contra": 500,
               "puntos_totales": 22,
               "racha": 11
             },
@@ -2192,8 +2191,8 @@
               "partidos_jugados": 11,
               "partidos_ganados": 0,
               "partidos_perdidos": 11,
-              "puntos_favor": 340,
-              "puntos_contra": 800,
+              "puntos_favor": 366,
+              "puntos_contra": 847,
               "puntos_totales": 11,
               "racha": -11
             }
@@ -2561,24 +2560,24 @@
             {
               "posicion": 1,
               "equipo": "TRISTAN SUAREZ",
-              "partidos_jugados": 10,
-              "partidos_ganados": 10,
+              "partidos_jugados": 11,
+              "partidos_ganados": 11,
               "partidos_perdidos": 0,
-              "puntos_favor": 668,
-              "puntos_contra": 289,
-              "puntos_totales": 20,
-              "racha": 10
+              "puntos_favor": 727,
+              "puntos_contra": 332,
+              "puntos_totales": 22,
+              "racha": 11
             },
             {
               "posicion": 2,
               "equipo": "MONTE GRANDE A  ROJO",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 8,
-              "partidos_perdidos": 1,
-              "puntos_favor": 683,
-              "puntos_contra": 357,
-              "puntos_totales": 17,
-              "racha": 8
+              "partidos_perdidos": 2,
+              "puntos_favor": 726,
+              "puntos_contra": 416,
+              "puntos_totales": 18,
+              "racha": -1
             },
             {
               "posicion": 3,
@@ -3075,13 +3074,13 @@
             {
               "posicion": 1,
               "equipo": "SOC.BECCAR",
-              "partidos_jugados": 11,
-              "partidos_ganados": 11,
+              "partidos_jugados": 12,
+              "partidos_ganados": 12,
               "partidos_perdidos": 0,
-              "puntos_favor": 969,
-              "puntos_contra": 403,
-              "puntos_totales": 22,
-              "racha": 11
+              "puntos_favor": 1057,
+              "puntos_contra": 434,
+              "puntos_totales": 24,
+              "racha": 12
             },
             {
               "posicion": 2,
@@ -3119,13 +3118,13 @@
             {
               "posicion": 5,
               "equipo": "UNION VECINAL DE MUNRO",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 5,
-              "partidos_perdidos": 6,
-              "puntos_favor": 615,
-              "puntos_contra": 622,
-              "puntos_totales": 16,
-              "racha": 2
+              "partidos_perdidos": 7,
+              "puntos_favor": 646,
+              "puntos_contra": 710,
+              "puntos_totales": 17,
+              "racha": -1
             },
             {
               "posicion": 6,
@@ -3168,38 +3167,49 @@
             {
               "posicion": 1,
               "equipo": "SAN FERNANDO AZUL (A)",
-              "partidos_jugados": 11,
-              "partidos_ganados": 11,
+              "partidos_jugados": 12,
+              "partidos_ganados": 12,
               "partidos_perdidos": 0,
-              "puntos_favor": 1005,
-              "puntos_contra": 447,
-              "puntos_totales": 22,
-              "racha": 11
+              "puntos_favor": 1081,
+              "puntos_contra": 487,
+              "puntos_totales": 24,
+              "racha": 12
             },
             {
               "posicion": 2,
               "equipo": "CAZA Y PESCA AZUL A",
-              "partidos_jugados": 11,
-              "partidos_ganados": 9,
-              "partidos_perdidos": 2,
-              "puntos_favor": 934,
-              "puntos_contra": 507,
-              "puntos_totales": 20,
+              "partidos_jugados": 13,
+              "partidos_ganados": 10,
+              "partidos_perdidos": 3,
+              "puntos_favor": 1092,
+              "puntos_contra": 631,
+              "puntos_totales": 23,
               "racha": -1
             },
             {
               "posicion": 3,
               "equipo": "C S D PRESIDENTE DERQUI",
-              "partidos_jugados": 11,
-              "partidos_ganados": 7,
+              "partidos_jugados": 12,
+              "partidos_ganados": 8,
               "partidos_perdidos": 4,
-              "puntos_favor": 676,
-              "puntos_contra": 643,
-              "puntos_totales": 18,
-              "racha": 2
+              "puntos_favor": 754,
+              "puntos_contra": 719,
+              "puntos_totales": 20,
+              "racha": 3
             },
             {
               "posicion": 4,
+              "equipo": "BELLA VISTA",
+              "partidos_jugados": 12,
+              "partidos_ganados": 5,
+              "partidos_perdidos": 7,
+              "puntos_favor": 760,
+              "puntos_contra": 870,
+              "puntos_totales": 17,
+              "racha": -2
+            },
+            {
+              "posicion": 5,
               "equipo": "CLUB SOCIAL Y DEPORTIVO ARENAL",
               "partidos_jugados": 11,
               "partidos_ganados": 5,
@@ -3208,17 +3218,6 @@
               "puntos_contra": 734,
               "puntos_totales": 16,
               "racha": 1
-            },
-            {
-              "posicion": 5,
-              "equipo": "BELLA VISTA",
-              "partidos_jugados": 11,
-              "partidos_ganados": 5,
-              "partidos_perdidos": 6,
-              "puntos_favor": 720,
-              "puntos_contra": 794,
-              "puntos_totales": 16,
-              "racha": -1
             },
             {
               "posicion": 6,
@@ -3234,13 +3233,13 @@
             {
               "posicion": 7,
               "equipo": "VICTORIA NEGRO \"A\"",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 2,
-              "partidos_perdidos": 9,
-              "puntos_favor": 627,
-              "puntos_contra": 642,
-              "puntos_totales": 13,
-              "racha": -9
+              "partidos_perdidos": 10,
+              "puntos_favor": 673,
+              "puntos_contra": 724,
+              "puntos_totales": 14,
+              "racha": -10
             },
             {
               "posicion": 8,
@@ -3354,24 +3353,24 @@
             {
               "posicion": 1,
               "equipo": "ARQUITECTURA NEGRO  A",
-              "partidos_jugados": 10,
-              "partidos_ganados": 9,
+              "partidos_jugados": 11,
+              "partidos_ganados": 10,
               "partidos_perdidos": 1,
-              "puntos_favor": 863,
-              "puntos_contra": 447,
-              "puntos_totales": 19,
-              "racha": 4
+              "puntos_favor": 956,
+              "puntos_contra": 492,
+              "puntos_totales": 21,
+              "racha": 5
             },
             {
               "posicion": 2,
               "equipo": "PINOCHO",
-              "partidos_jugados": 9,
-              "partidos_ganados": 9,
+              "partidos_jugados": 10,
+              "partidos_ganados": 10,
               "partidos_perdidos": 0,
-              "puntos_favor": 892,
-              "puntos_contra": 274,
-              "puntos_totales": 18,
-              "racha": 9
+              "puntos_favor": 994,
+              "puntos_contra": 317,
+              "puntos_totales": 20,
+              "racha": 10
             },
             {
               "posicion": 3,
@@ -3387,13 +3386,13 @@
             {
               "posicion": 4,
               "equipo": "ALL BOYS",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 5,
-              "partidos_perdidos": 4,
-              "puntos_favor": 453,
-              "puntos_contra": 556,
-              "puntos_totales": 14,
-              "racha": 2
+              "partidos_perdidos": 5,
+              "puntos_favor": 496,
+              "puntos_contra": 658,
+              "puntos_totales": 15,
+              "racha": -1
             },
             {
               "posicion": 5,
@@ -3408,6 +3407,17 @@
             },
             {
               "posicion": 6,
+              "equipo": "EL TALAR",
+              "partidos_jugados": 10,
+              "partidos_ganados": 1,
+              "partidos_perdidos": 9,
+              "puntos_favor": 462,
+              "puntos_contra": 762,
+              "puntos_totales": 11,
+              "racha": -3
+            },
+            {
+              "posicion": 7,
               "equipo": "COLEGIALES BLANCO",
               "partidos_jugados": 9,
               "partidos_ganados": 2,
@@ -3416,17 +3426,6 @@
               "puntos_contra": 607,
               "puntos_totales": 11,
               "racha": -7
-            },
-            {
-              "posicion": 7,
-              "equipo": "EL TALAR",
-              "partidos_jugados": 9,
-              "partidos_ganados": 1,
-              "partidos_perdidos": 8,
-              "puntos_favor": 417,
-              "puntos_contra": 669,
-              "puntos_totales": 10,
-              "racha": -2
             }
           ]
         },
@@ -3435,6 +3434,17 @@
           "clasificacion": [
             {
               "posicion": 1,
+              "equipo": "FERROCARRIL OESTE BLANCO (B)",
+              "partidos_jugados": 11,
+              "partidos_ganados": 10,
+              "partidos_perdidos": 1,
+              "puntos_favor": 911,
+              "puntos_contra": 341,
+              "puntos_totales": 21,
+              "racha": 7
+            },
+            {
+              "posicion": 2,
               "equipo": "PINOCHO BLANCO",
               "partidos_jugados": 10,
               "partidos_ganados": 9,
@@ -3445,18 +3455,18 @@
               "racha": 1
             },
             {
-              "posicion": 2,
-              "equipo": "FERROCARRIL OESTE BLANCO (B)",
+              "posicion": 3,
+              "equipo": "ARQUITECTURA BLANCO  B",
               "partidos_jugados": 10,
-              "partidos_ganados": 9,
-              "partidos_perdidos": 1,
-              "puntos_favor": 818,
-              "puntos_contra": 308,
-              "puntos_totales": 19,
-              "racha": 6
+              "partidos_ganados": 6,
+              "partidos_perdidos": 4,
+              "puntos_favor": 474,
+              "puntos_contra": 566,
+              "puntos_totales": 16,
+              "racha": -1
             },
             {
-              "posicion": 3,
+              "posicion": 4,
               "equipo": "IMPERIO NEGRO B",
               "partidos_jugados": 10,
               "partidos_ganados": 5,
@@ -3465,17 +3475,6 @@
               "puntos_contra": 541,
               "puntos_totales": 15,
               "racha": 2
-            },
-            {
-              "posicion": 4,
-              "equipo": "ARQUITECTURA BLANCO  B",
-              "partidos_jugados": 9,
-              "partidos_ganados": 6,
-              "partidos_perdidos": 3,
-              "puntos_favor": 441,
-              "puntos_contra": 473,
-              "puntos_totales": 15,
-              "racha": 3
             },
             {
               "posicion": 5,
@@ -3518,35 +3517,35 @@
             {
               "posicion": 1,
               "equipo": "FERROCARRIL OESTE VERDE (A)",
-              "partidos_jugados": 9,
-              "partidos_ganados": 9,
+              "partidos_jugados": 10,
+              "partidos_ganados": 10,
               "partidos_perdidos": 0,
-              "puntos_favor": 808,
-              "puntos_contra": 448,
-              "puntos_totales": 18,
-              "racha": 9
+              "puntos_favor": 958,
+              "puntos_contra": 479,
+              "puntos_totales": 20,
+              "racha": 10
             },
             {
               "posicion": 2,
               "equipo": "PEDRO ECHAGUE AZUL A",
-              "partidos_jugados": 10,
-              "partidos_ganados": 8,
+              "partidos_jugados": 11,
+              "partidos_ganados": 9,
               "partidos_perdidos": 2,
-              "puntos_favor": 814,
-              "puntos_contra": 543,
-              "puntos_totales": 18,
-              "racha": 3
+              "puntos_favor": 889,
+              "puntos_contra": 599,
+              "puntos_totales": 20,
+              "racha": 4
             },
             {
               "posicion": 3,
               "equipo": "SAN LORENZO AZUL",
-              "partidos_jugados": 10,
+              "partidos_jugados": 11,
               "partidos_ganados": 6,
-              "partidos_perdidos": 4,
-              "puntos_favor": 686,
-              "puntos_contra": 584,
-              "puntos_totales": 16,
-              "racha": -1
+              "partidos_perdidos": 5,
+              "puntos_favor": 742,
+              "puntos_contra": 659,
+              "puntos_totales": 17,
+              "racha": -2
             },
             {
               "posicion": 4,
@@ -3584,13 +3583,13 @@
             {
               "posicion": 7,
               "equipo": "MACABI",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 0,
-              "partidos_perdidos": 9,
-              "puntos_favor": 329,
-              "puntos_contra": 1008,
-              "puntos_totales": 9,
-              "racha": -9
+              "partidos_perdidos": 10,
+              "puntos_favor": 360,
+              "puntos_contra": 1158,
+              "puntos_totales": 10,
+              "racha": -10
             }
           ]
         },
@@ -4192,23 +4191,23 @@
               "posicion": 7,
               "equipo": "DEFENSORES DE MORENO NEGRO",
               "partidos_jugados": 11,
-              "partidos_ganados": 2,
-              "partidos_perdidos": 9,
-              "puntos_favor": 285,
-              "puntos_contra": 560,
-              "puntos_totales": 13,
-              "racha": 1
+              "partidos_ganados": 1,
+              "partidos_perdidos": 10,
+              "puntos_favor": 241,
+              "puntos_contra": 542,
+              "puntos_totales": 12,
+              "racha": -6
             },
             {
               "posicion": 8,
               "equipo": "EL PORVENIR JOSE C. PAZ",
               "partidos_jugados": 11,
-              "partidos_ganados": 0,
-              "partidos_perdidos": 11,
-              "puntos_favor": 302,
-              "puntos_contra": 865,
-              "puntos_totales": 11,
-              "racha": -11
+              "partidos_ganados": 1,
+              "partidos_perdidos": 10,
+              "puntos_favor": 284,
+              "puntos_contra": 821,
+              "puntos_totales": 12,
+              "racha": 1
             }
           ]
         },
@@ -4537,12 +4536,12 @@
               "posicion": 6,
               "equipo": "MUNIC.AVELLANEDA",
               "partidos_jugados": 11,
-              "partidos_ganados": 4,
-              "partidos_perdidos": 7,
-              "puntos_favor": 562,
-              "puntos_contra": 530,
-              "puntos_totales": 15,
-              "racha": 1
+              "partidos_ganados": 3,
+              "partidos_perdidos": 8,
+              "puntos_favor": 494,
+              "puntos_contra": 526,
+              "puntos_totales": 14,
+              "racha": -3
             },
             {
               "posicion": 7,
@@ -4559,12 +4558,12 @@
               "posicion": 8,
               "equipo": "SPORTIVO ALSINA",
               "partidos_jugados": 11,
-              "partidos_ganados": 0,
-              "partidos_perdidos": 11,
-              "puntos_favor": 349,
-              "puntos_contra": 851,
-              "puntos_totales": 11,
-              "racha": -11
+              "partidos_ganados": 1,
+              "partidos_perdidos": 10,
+              "puntos_favor": 345,
+              "puntos_contra": 783,
+              "puntos_totales": 12,
+              "racha": 1
             }
           ]
         },
@@ -4863,28 +4862,17 @@
             },
             {
               "posicion": 4,
-              "equipo": "ARGENTINO DE QUILMES",
+              "equipo": "CLUB VECINAL LA UNION",
               "partidos_jugados": 9,
-              "partidos_ganados": 2,
-              "partidos_perdidos": 7,
-              "puntos_favor": 304,
-              "puntos_contra": 468,
-              "puntos_totales": 11,
+              "partidos_ganados": 3,
+              "partidos_perdidos": 6,
+              "puntos_favor": 261,
+              "puntos_contra": 557,
+              "puntos_totales": 12,
               "racha": 1
             },
             {
               "posicion": 5,
-              "equipo": "CLUB VECINAL LA UNION",
-              "partidos_jugados": 9,
-              "partidos_ganados": 2,
-              "partidos_perdidos": 7,
-              "puntos_favor": 285,
-              "puntos_contra": 613,
-              "puntos_totales": 11,
-              "racha": -4
-            },
-            {
-              "posicion": 6,
               "equipo": "VILLA ESPAÑA",
               "partidos_jugados": 9,
               "partidos_ganados": 2,
@@ -4895,7 +4883,7 @@
               "racha": -2
             },
             {
-              "posicion": 7,
+              "posicion": 6,
               "equipo": "CLUB  ATLETICO Y PROGRESO DE BRANDSEN",
               "partidos_jugados": 8,
               "partidos_ganados": 2,
@@ -4904,6 +4892,17 @@
               "puntos_contra": 559,
               "puntos_totales": 10,
               "racha": -2
+            },
+            {
+              "posicion": 7,
+              "equipo": "ARGENTINO DE QUILMES",
+              "partidos_jugados": 9,
+              "partidos_ganados": 1,
+              "partidos_perdidos": 8,
+              "puntos_favor": 248,
+              "puntos_contra": 444,
+              "puntos_totales": 10,
+              "racha": -8
             }
           ]
         },
@@ -5296,16 +5295,27 @@
             {
               "posicion": 4,
               "equipo": "SOC.BECCAR",
-              "partidos_jugados": 11,
-              "partidos_ganados": 6,
+              "partidos_jugados": 12,
+              "partidos_ganados": 7,
               "partidos_perdidos": 5,
-              "puntos_favor": 410,
-              "puntos_contra": 484,
-              "puntos_totales": 17,
-              "racha": -1
+              "puntos_favor": 447,
+              "puntos_contra": 519,
+              "puntos_totales": 19,
+              "racha": 1
             },
             {
               "posicion": 5,
+              "equipo": "UNION VECINAL DE MUNRO",
+              "partidos_jugados": 12,
+              "partidos_ganados": 4,
+              "partidos_perdidos": 8,
+              "puntos_favor": 469,
+              "puntos_contra": 488,
+              "puntos_totales": 16,
+              "racha": -2
+            },
+            {
+              "posicion": 6,
               "equipo": "NAUTICO BUCHARDO NORTE (A)",
               "partidos_jugados": 11,
               "partidos_ganados": 4,
@@ -5314,17 +5324,6 @@
               "puntos_contra": 445,
               "puntos_totales": 15,
               "racha": 1
-            },
-            {
-              "posicion": 6,
-              "equipo": "UNION VECINAL DE MUNRO",
-              "partidos_jugados": 11,
-              "partidos_ganados": 4,
-              "partidos_perdidos": 7,
-              "puntos_favor": 434,
-              "puntos_contra": 451,
-              "puntos_totales": 15,
-              "racha": -1
             },
             {
               "posicion": 7,
@@ -5542,24 +5541,24 @@
             {
               "posicion": 1,
               "equipo": "ARQUITECTURA NEGRO  A",
-              "partidos_jugados": 10,
-              "partidos_ganados": 9,
+              "partidos_jugados": 11,
+              "partidos_ganados": 10,
               "partidos_perdidos": 1,
-              "puntos_favor": 762,
-              "puntos_contra": 244,
-              "puntos_totales": 19,
-              "racha": 6
+              "puntos_favor": 829,
+              "puntos_contra": 283,
+              "puntos_totales": 21,
+              "racha": 7
             },
             {
               "posicion": 2,
               "equipo": "PINOCHO",
-              "partidos_jugados": 9,
-              "partidos_ganados": 8,
+              "partidos_jugados": 10,
+              "partidos_ganados": 9,
               "partidos_perdidos": 1,
-              "puntos_favor": 760,
-              "puntos_contra": 254,
-              "puntos_totales": 17,
-              "racha": 3
+              "puntos_favor": 855,
+              "puntos_contra": 284,
+              "puntos_totales": 19,
+              "racha": 4
             },
             {
               "posicion": 3,
@@ -5575,24 +5574,24 @@
             {
               "posicion": 4,
               "equipo": "EL TALAR",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 4,
-              "partidos_perdidos": 5,
-              "puntos_favor": 357,
-              "puntos_contra": 440,
-              "puntos_totales": 13,
-              "racha": -2
+              "partidos_perdidos": 6,
+              "puntos_favor": 396,
+              "puntos_contra": 507,
+              "puntos_totales": 14,
+              "racha": -3
             },
             {
               "posicion": 5,
               "equipo": "ALL BOYS",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 4,
-              "partidos_perdidos": 5,
-              "puntos_favor": 325,
-              "puntos_contra": 446,
-              "puntos_totales": 13,
-              "racha": 2
+              "partidos_perdidos": 6,
+              "puntos_favor": 355,
+              "puntos_contra": 541,
+              "puntos_totales": 14,
+              "racha": -1
             },
             {
               "posicion": 6,
@@ -5788,13 +5787,13 @@
             {
               "posicion": 1,
               "equipo": "JOSE HERNANDEZ \"A\"",
-              "partidos_jugados": 9,
-              "partidos_ganados": 9,
+              "partidos_jugados": 10,
+              "partidos_ganados": 10,
               "partidos_perdidos": 0,
-              "puntos_favor": 704,
-              "puntos_contra": 179,
-              "puntos_totales": 18,
-              "racha": 9
+              "puntos_favor": 785,
+              "puntos_contra": 198,
+              "puntos_totales": 20,
+              "racha": 10
             },
             {
               "posicion": 2,
@@ -5842,6 +5841,17 @@
             },
             {
               "posicion": 6,
+              "equipo": "NOLTING",
+              "partidos_jugados": 10,
+              "partidos_ganados": 1,
+              "partidos_perdidos": 9,
+              "puntos_favor": 309,
+              "puntos_contra": 558,
+              "puntos_totales": 11,
+              "racha": -1
+            },
+            {
+              "posicion": 7,
               "equipo": "ALDO BONZI",
               "partidos_jugados": 9,
               "partidos_ganados": 1,
@@ -5850,17 +5860,6 @@
               "puntos_contra": 648,
               "puntos_totales": 10,
               "racha": -6
-            },
-            {
-              "posicion": 7,
-              "equipo": "NOLTING",
-              "partidos_jugados": 9,
-              "partidos_ganados": 1,
-              "partidos_perdidos": 8,
-              "puntos_favor": 290,
-              "puntos_contra": 477,
-              "puntos_totales": 10,
-              "racha": 1
             }
           ]
         },
@@ -6127,13 +6126,13 @@
             {
               "posicion": 1,
               "equipo": "ESTUDIANTIL PORTEÑO \"A\"",
-              "partidos_jugados": 11,
-              "partidos_ganados": 10,
+              "partidos_jugados": 12,
+              "partidos_ganados": 11,
               "partidos_perdidos": 1,
-              "puntos_favor": 791,
-              "puntos_contra": 345,
-              "puntos_totales": 21,
-              "racha": 5
+              "puntos_favor": 867,
+              "puntos_contra": 372,
+              "puntos_totales": 23,
+              "racha": 6
             },
             {
               "posicion": 2,
@@ -6170,6 +6169,17 @@
             },
             {
               "posicion": 5,
+              "equipo": "CENTRO ESPAÑOL",
+              "partidos_jugados": 12,
+              "partidos_ganados": 3,
+              "partidos_perdidos": 9,
+              "puntos_favor": 447,
+              "puntos_contra": 688,
+              "puntos_totales": 15,
+              "racha": -2
+            },
+            {
+              "posicion": 6,
               "equipo": "SITAS",
               "partidos_jugados": 11,
               "partidos_ganados": 3,
@@ -6178,17 +6188,6 @@
               "puntos_contra": 698,
               "puntos_totales": 14,
               "racha": -5
-            },
-            {
-              "posicion": 6,
-              "equipo": "CENTRO ESPAÑOL",
-              "partidos_jugados": 11,
-              "partidos_ganados": 3,
-              "partidos_perdidos": 8,
-              "puntos_favor": 420,
-              "puntos_contra": 612,
-              "puntos_totales": 14,
-              "racha": -1
             },
             {
               "posicion": 7,
@@ -6477,24 +6476,24 @@
             {
               "posicion": 1,
               "equipo": "ESTUDIANTIL PORTEÑO \"B\"",
-              "partidos_jugados": 10,
-              "partidos_ganados": 10,
+              "partidos_jugados": 12,
+              "partidos_ganados": 12,
               "partidos_perdidos": 0,
-              "puntos_favor": 505,
-              "puntos_contra": 286,
-              "puntos_totales": 20,
-              "racha": 10
+              "puntos_favor": 635,
+              "puntos_contra": 332,
+              "puntos_totales": 24,
+              "racha": 12
             },
             {
               "posicion": 2,
               "equipo": "SPORTIVO HAEDO",
-              "partidos_jugados": 10,
+              "partidos_jugados": 11,
               "partidos_ganados": 9,
-              "partidos_perdidos": 1,
-              "puntos_favor": 463,
-              "puntos_contra": 308,
-              "puntos_totales": 19,
-              "racha": 8
+              "partidos_perdidos": 2,
+              "puntos_favor": 500,
+              "puntos_contra": 361,
+              "puntos_totales": 20,
+              "racha": -1
             },
             {
               "posicion": 3,
@@ -6554,13 +6553,13 @@
             {
               "posicion": 8,
               "equipo": "DEFENSORES DE HURLINGHAM  BLANCO B",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 0,
-              "partidos_perdidos": 11,
-              "puntos_favor": 253,
-              "puntos_contra": 644,
-              "puntos_totales": 11,
-              "racha": -11
+              "partidos_perdidos": 12,
+              "puntos_favor": 262,
+              "puntos_contra": 721,
+              "puntos_totales": 12,
+              "racha": -12
             }
           ]
         }
@@ -7708,16 +7707,27 @@
             {
               "posicion": 1,
               "equipo": "PINOCHO",
-              "partidos_jugados": 9,
-              "partidos_ganados": 9,
+              "partidos_jugados": 10,
+              "partidos_ganados": 10,
               "partidos_perdidos": 0,
-              "puntos_favor": 803,
-              "puntos_contra": 352,
-              "puntos_totales": 18,
-              "racha": 9
+              "puntos_favor": 887,
+              "puntos_contra": 390,
+              "puntos_totales": 20,
+              "racha": 10
             },
             {
               "posicion": 2,
+              "equipo": "ARQUITECTURA NEGRO A",
+              "partidos_jugados": 11,
+              "partidos_ganados": 8,
+              "partidos_perdidos": 3,
+              "puntos_favor": 798,
+              "puntos_contra": 426,
+              "puntos_totales": 19,
+              "racha": 2
+            },
+            {
+              "posicion": 3,
               "equipo": "VILLA MITRE",
               "partidos_jugados": 10,
               "partidos_ganados": 8,
@@ -7728,59 +7738,48 @@
               "racha": -1
             },
             {
-              "posicion": 3,
-              "equipo": "ARQUITECTURA NEGRO A",
-              "partidos_jugados": 10,
-              "partidos_ganados": 7,
-              "partidos_perdidos": 3,
-              "puntos_favor": 733,
-              "puntos_contra": 391,
-              "puntos_totales": 17,
-              "racha": 1
-            },
-            {
               "posicion": 4,
               "equipo": "COLEGIALES BLANCO",
-              "partidos_jugados": 9,
-              "partidos_ganados": 4,
+              "partidos_jugados": 10,
+              "partidos_ganados": 5,
               "partidos_perdidos": 5,
-              "puntos_favor": 445,
-              "puntos_contra": 398,
-              "puntos_totales": 13,
-              "racha": -2
+              "puntos_favor": 531,
+              "puntos_contra": 415,
+              "puntos_totales": 15,
+              "racha": 1
             },
             {
               "posicion": 5,
               "equipo": "EL TALAR",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 3,
-              "partidos_perdidos": 6,
-              "puntos_favor": 371,
-              "puntos_contra": 558,
-              "puntos_totales": 12,
-              "racha": 1
+              "partidos_perdidos": 7,
+              "puntos_favor": 406,
+              "puntos_contra": 623,
+              "puntos_totales": 13,
+              "racha": -1
             },
             {
               "posicion": 6,
               "equipo": "ALL BOYS",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 2,
-              "partidos_perdidos": 7,
-              "puntos_favor": 405,
-              "puntos_contra": 647,
-              "puntos_totales": 11,
-              "racha": 1
+              "partidos_perdidos": 8,
+              "puntos_favor": 443,
+              "puntos_contra": 731,
+              "puntos_totales": 12,
+              "racha": -1
             },
             {
               "posicion": 7,
               "equipo": "ARGENTINOS JUNIORS",
-              "partidos_jugados": 10,
+              "partidos_jugados": 11,
               "partidos_ganados": 0,
-              "partidos_perdidos": 10,
-              "puntos_favor": 173,
-              "puntos_contra": 919,
-              "puntos_totales": 10,
-              "racha": -10
+              "partidos_perdidos": 11,
+              "puntos_favor": 190,
+              "puntos_contra": 1005,
+              "puntos_totales": 11,
+              "racha": -11
             }
           ]
         },
@@ -7954,13 +7953,13 @@
             {
               "posicion": 1,
               "equipo": "JOSE HERNANDEZ \"A\"",
-              "partidos_jugados": 9,
-              "partidos_ganados": 8,
+              "partidos_jugados": 10,
+              "partidos_ganados": 9,
               "partidos_perdidos": 1,
-              "puntos_favor": 821,
-              "puntos_contra": 278,
-              "puntos_totales": 17,
-              "racha": 3
+              "puntos_favor": 938,
+              "puntos_contra": 309,
+              "puntos_totales": 19,
+              "racha": 4
             },
             {
               "posicion": 2,
@@ -7987,13 +7986,13 @@
             {
               "posicion": 4,
               "equipo": "NOLTING",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 4,
-              "partidos_perdidos": 5,
-              "puntos_favor": 317,
-              "puntos_contra": 511,
-              "puntos_totales": 13,
-              "racha": 1
+              "partidos_perdidos": 6,
+              "puntos_favor": 348,
+              "puntos_contra": 628,
+              "puntos_totales": 14,
+              "racha": -1
             },
             {
               "posicion": 5,
@@ -9830,68 +9829,68 @@
             {
               "posicion": 2,
               "equipo": "ARQUITECTURA NEGRO A",
-              "partidos_jugados": 10,
-              "partidos_ganados": 5,
+              "partidos_jugados": 11,
+              "partidos_ganados": 6,
               "partidos_perdidos": 5,
-              "puntos_favor": 159,
-              "puntos_contra": 126,
-              "puntos_totales": 15,
-              "racha": 1
+              "puntos_favor": 201,
+              "puntos_contra": 156,
+              "puntos_totales": 17,
+              "racha": 2
             },
             {
               "posicion": 3,
               "equipo": "PINOCHO",
-              "partidos_jugados": 8,
-              "partidos_ganados": 6,
+              "partidos_jugados": 9,
+              "partidos_ganados": 7,
               "partidos_perdidos": 2,
-              "puntos_favor": 198,
-              "puntos_contra": 136,
-              "puntos_totales": 14,
-              "racha": -1
+              "puntos_favor": 218,
+              "puntos_contra": 146,
+              "puntos_totales": 16,
+              "racha": 1
             },
             {
               "posicion": 4,
               "equipo": "ALL BOYS",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 4,
-              "partidos_perdidos": 5,
-              "puntos_favor": 154,
-              "puntos_contra": 196,
-              "puntos_totales": 13,
-              "racha": 3
+              "partidos_perdidos": 6,
+              "puntos_favor": 164,
+              "puntos_contra": 216,
+              "puntos_totales": 14,
+              "racha": -1
             },
             {
               "posicion": 5,
               "equipo": "EL TALAR",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 3,
-              "partidos_perdidos": 5,
-              "puntos_favor": 190,
-              "puntos_contra": 250,
-              "puntos_totales": 11,
-              "racha": -2
+              "partidos_perdidos": 6,
+              "puntos_favor": 220,
+              "puntos_contra": 292,
+              "puntos_totales": 12,
+              "racha": -3
             },
             {
               "posicion": 6,
               "equipo": "COLEGIALES BLANCO",
-              "partidos_jugados": 8,
+              "partidos_jugados": 9,
               "partidos_ganados": 3,
               "partidos_perdidos": 4,
               "puntos_favor": 110,
               "puntos_contra": 118,
               "puntos_totales": 10,
-              "racha": -3
+              "racha": -4
             },
             {
               "posicion": 7,
               "equipo": "ARGENTINOS JUNIORS",
-              "partidos_jugados": 10,
+              "partidos_jugados": 11,
               "partidos_ganados": 0,
               "partidos_perdidos": 9,
               "puntos_favor": 80,
               "puntos_contra": 185,
               "puntos_totales": 9,
-              "racha": -10
+              "racha": -11
             }
           ]
         },
@@ -10087,13 +10086,13 @@
             {
               "posicion": 3,
               "equipo": "JOSE HERNANDEZ \"A\"",
-              "partidos_jugados": 9,
-              "partidos_ganados": 4,
+              "partidos_jugados": 10,
+              "partidos_ganados": 5,
               "partidos_perdidos": 3,
-              "puntos_favor": 112,
-              "puntos_contra": 118,
-              "puntos_totales": 11,
-              "racha": 1
+              "puntos_favor": 134,
+              "puntos_contra": 138,
+              "puntos_totales": 13,
+              "racha": 2
             },
             {
               "posicion": 4,
@@ -10120,13 +10119,13 @@
             {
               "posicion": 6,
               "equipo": "NOLTING",
-              "partidos_jugados": 9,
+              "partidos_jugados": 10,
               "partidos_ganados": 2,
-              "partidos_perdidos": 4,
-              "puntos_favor": 48,
-              "puntos_contra": 113,
-              "puntos_totales": 8,
-              "racha": -2
+              "partidos_perdidos": 5,
+              "puntos_favor": 68,
+              "puntos_contra": 135,
+              "puntos_totales": 9,
+              "racha": -3
             },
             {
               "posicion": 7,
