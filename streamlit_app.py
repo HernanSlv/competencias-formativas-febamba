@@ -176,40 +176,29 @@ def get_zona_from_group_name(group_name):
         return group_name.split()[0].upper()
 
 def get_clasificados_por_zona(grupos, zona):
-    """Obtiene los 16 clasificados de una zona específica"""
+    """Obtiene los 16 clasificados de una zona específica ordenados correctamente"""
     # Filtrar grupos de la zona
     grupos_zona = [g for g in grupos if get_zona_from_group_name(g['nombre']) == zona]
     
     if not grupos_zona:
         return []
     
-    primeros = []
-    segundos = []
-    terceros = []
+    # Obtener TODOS los equipos de la zona primero
+    todos_los_equipos = []
     
-    # Obtener equipos por posición
     for grupo in grupos_zona:
-        clasificacion = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
-        
-        if len(clasificacion) >= 1:
-            equipo = clasificacion[0].copy()
-            equipo['zona_grupo'] = grupo['nombre']
-            equipo['tipo_clasificacion'] = "1º puesto"
-            primeros.append(equipo)
-        
-        if len(clasificacion) >= 2:
-            equipo = clasificacion[1].copy()
-            equipo['zona_grupo'] = grupo['nombre']
-            equipo['tipo_clasificacion'] = "2º puesto"
-            segundos.append(equipo)
-            
-        if len(clasificacion) >= 3:
-            equipo = clasificacion[2].copy()
-            equipo['zona_grupo'] = grupo['nombre']
-            equipo['tipo_clasificacion'] = "3º puesto"
-            terceros.append(equipo)
+        for equipo in grupo['clasificacion']:
+            equipo_copia = equipo.copy()
+            equipo_copia['zona_grupo'] = grupo['nombre']
+            equipo_copia['posicion_grupo'] = equipo['posicion']  # Posición en su grupo
+            todos_los_equipos.append(equipo_copia)
     
-    # Ordenar por criterios de desempate
+    # Separar por posición en grupo para aplicar reglas de clasificación
+    primeros = [e for e in todos_los_equipos if e['posicion_grupo'] == 1]
+    segundos = [e for e in todos_los_equipos if e['posicion_grupo'] == 2]  
+    terceros = [e for e in todos_los_equipos if e['posicion_grupo'] == 3]
+    
+    # Ordenar cada grupo por criterios de desempate
     def sort_teams(teams):
         return sorted(teams, key=lambda x: (
             -x['puntos_totales'],
@@ -222,20 +211,36 @@ def get_clasificados_por_zona(grupos, zona):
     segundos = sort_teams(segundos)
     terceros = sort_teams(terceros)
     
+    # Asignar tipo de clasificación
+    for equipo in primeros:
+        equipo['tipo_clasificacion'] = "1º puesto"
+    for equipo in segundos:
+        equipo['tipo_clasificacion'] = "2º puesto"
+    for equipo in terceros:
+        equipo['tipo_clasificacion'] = "3º puesto"
+    
     # Determinar cuántos terceros clasifican según la zona
     if zona == "SUR":
         terceros_clasifican = 2  # SUR: 7 zonas, 2 terceros
     else:
         terceros_clasifican = 4  # NORTE/CENTRO/OESTE: 6 zonas, 4 terceros
     
-    # Combinar clasificados
+    # IMPORTANTE: Combinar clasificados y crear ranking final
     clasificados = primeros + segundos + terceros[:terceros_clasifican]
     
-    # Asignar posiciones de playoff (1-16)
-    for i, equipo in enumerate(clasificados):
+    # Ordenar TODA la lista final por criterios globales para crear el ranking 1-16
+    clasificados_finales = sorted(clasificados, key=lambda x: (
+        -x['puntos_totales'],
+        -x['partidos_ganados'], 
+        -(x['puntos_favor'] - x['puntos_contra']),
+        -x['puntos_favor']
+    ))
+    
+    # Asignar posiciones finales de playoff (1-16)
+    for i, equipo in enumerate(clasificados_finales):
         equipo['posicion_playoff'] = i + 1
     
-    return clasificados[:16]  # Asegurar máximo 16 equipos
+    return clasificados_finales[:16]  # Asegurar máximo 16 equipos
 
 def generate_playoff_matchups(clasificados):
     """Genera los enfrentamientos de playoff: 1vs16, 2vs15, etc."""
