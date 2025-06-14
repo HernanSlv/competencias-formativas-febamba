@@ -51,6 +51,16 @@ st.markdown("""
     font-weight: bold;
 }
 
+.zona-playoff-header {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
 .clasificado-directo {
     background-color: #d4edda !important;
 }
@@ -74,20 +84,20 @@ st.markdown("""
     border: 2px solid #e74c3c;
     border-radius: 10px;
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.team-local {
-    background: linear-gradient(135deg, #3498db, #2980b9);
+.team-superior {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
     color: white;
     padding: 0.5rem;
     border-radius: 5px;
     margin: 0.25rem 0;
 }
 
-.team-visitante {
-    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+.team-inferior {
+    background: linear-gradient(135deg, #e67e22, #f39c12);
     color: white;
     padding: 0.5rem;
     border-radius: 5px;
@@ -96,10 +106,10 @@ st.markdown("""
 
 .vs-separator {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #e74c3c;
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
 }
 
 .metric-card {
@@ -126,184 +136,8 @@ st.markdown("""
     color: #dc3545;
     font-weight: bold;
 }
-
-.playoff-format-selector {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid #e74c3c;
-    margin: 1rem 0;
-}
 </style>
 """, unsafe_allow_html=True)
-
-class PlayoffGenerator:
-    def __init__(self):
-        self.playoff_formats = {
-            '1vs3': 'Primeros vs Terceros cruzados',
-            '1vs2': 'Primeros vs Segundos de otras zonas',
-            '1vs3vs2': 'Eliminación con 1°, 2° y 3°',
-            'round_robin': 'Round Robin por posición'
-        }
-    
-    def get_teams_by_position(self, grupos, positions):
-        """Obtiene equipos por posición en cada zona"""
-        teams_by_position = {}
-        
-        for pos in positions:
-            teams_by_position[f"pos_{pos}"] = []
-        
-        for grupo in grupos:
-            zona = grupo['nombre']
-            standings = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
-            
-            for pos in positions:
-                if len(standings) >= pos:
-                    team = standings[pos - 1].copy()
-                    team['zona_origen'] = zona
-                    teams_by_position[f"pos_{pos}"].append(team)
-        
-        return teams_by_position
-    
-    def sort_teams(self, teams):
-        """Ordena equipos por criterios de clasificación"""
-        return sorted(teams, key=lambda x: (
-            -x['puntos_totales'],
-            -x['partidos_ganados'],
-            -(x['puntos_favor'] - x['puntos_contra']),
-            -x['puntos_favor']
-        ))
-    
-    def format_team_info(self, team, description):
-        """Formatea información del equipo"""
-        return {
-            'equipo': team['equipo'],
-            'zona': team['zona_origen'],
-            'posicion_zona': team['posicion'],
-            'descripcion': description,
-            'puntos_totales': team['puntos_totales'],
-            'partidos_jugados': team['partidos_jugados'],
-            'partidos_ganados': team['partidos_ganados'],
-            'partidos_perdidos': team['partidos_perdidos'],
-            'diferencia_puntos': team['puntos_favor'] - team['puntos_contra'],
-            'puntos_favor': team['puntos_favor'],
-            'puntos_contra': team['puntos_contra']
-        }
-    
-    def generate_1vs3_playoffs(self, grupos):
-        """Genera playoffs formato 1º vs 3º"""
-        teams = self.get_teams_by_position(grupos, [1, 3])
-        
-        primeros = self.sort_teams(teams['pos_1'])
-        terceros = self.sort_teams(teams['pos_3'])
-        terceros_invertidos = terceros[::-1]
-        
-        matchups = []
-        min_teams = min(len(primeros), len(terceros))
-        
-        for i in range(min_teams):
-            primero = primeros[i]
-            tercero = terceros_invertidos[i]
-            
-            matchups.append({
-                'match_id': i + 1,
-                'local': self.format_team_info(primero, f"1º de {primero['zona_origen']}"),
-                'visitante': self.format_team_info(tercero, f"3º de {tercero['zona_origen']}"),
-                'description': f"#{i+1} de primeros vs #{len(terceros_invertidos)-i} de terceros",
-                'fecha': None,
-                'hora': None
-            })
-        
-        return {
-            'format': '1vs3',
-            'description': 'Primeros vs Terceros cruzados',
-            'matches': matchups,
-            'total_matches': len(matchups),
-            'participating_teams': len(matchups) * 2
-        }
-    
-    def generate_1vs2_playoffs(self, grupos):
-        """Genera playoffs formato 1º vs 2º"""
-        teams = self.get_teams_by_position(grupos, [1, 2])
-        
-        primeros = self.sort_teams(teams['pos_1'])
-        segundos = self.sort_teams(teams['pos_2'])
-        segundos_invertidos = segundos[::-1]
-        
-        matchups = []
-        min_teams = min(len(primeros), len(segundos))
-        
-        for i in range(min_teams):
-            primero = primeros[i]
-            segundo = segundos_invertidos[i]
-            
-            matchups.append({
-                'match_id': i + 1,
-                'local': self.format_team_info(primero, f"1º de {primero['zona_origen']}"),
-                'visitante': self.format_team_info(segundo, f"2º de {segundo['zona_origen']}"),
-                'description': f"#{i+1} de primeros vs #{len(segundos_invertidos)-i} de segundos",
-                'fecha': None,
-                'hora': None
-            })
-        
-        return {
-            'format': '1vs2',
-            'description': 'Primeros vs Segundos cruzados',
-            'matches': matchups,
-            'total_matches': len(matchups),
-            'participating_teams': len(matchups) * 2
-        }
-    
-    def generate_round_robin_playoffs(self, grupos, positions=[1]):
-        """Genera playoffs formato todos contra todos por posición"""
-        teams = self.get_teams_by_position(grupos, positions)
-        
-        all_matches = []
-        
-        for pos in positions:
-            pos_teams = self.sort_teams(teams[f'pos_{pos}'])
-            
-            # Generar todos los enfrentamientos posibles
-            for i in range(len(pos_teams)):
-                for j in range(i + 1, len(pos_teams)):
-                    team1 = pos_teams[i]
-                    team2 = pos_teams[j]
-                    
-                    all_matches.append({
-                        'match_id': len(all_matches) + 1,
-                        'local': self.format_team_info(team1, f"{pos}º de {team1['zona_origen']}"),
-                        'visitante': self.format_team_info(team2, f"{pos}º de {team2['zona_origen']}"),
-                        'description': f"Round Robin entre {pos}º puestos",
-                        'fecha': None,
-                        'hora': None
-                    })
-        
-        return {
-            'format': 'round_robin',
-            'description': f'Round Robin entre equipos de posiciones {positions}',
-            'matches': all_matches,
-            'total_matches': len(all_matches),
-            'participating_teams': sum(len(teams[f'pos_{pos}']) for pos in positions)
-        }
-    
-    def generate_playoff_schedule(self, playoff_data, start_date=None, days_between=7):
-        """Genera calendario de partidos"""
-        if not start_date:
-            start_date = datetime.now() + timedelta(days=30)  # Empezar en 30 días
-        else:
-            start_date = datetime.strptime(start_date, '%Y-%m-%d')
-        
-        current_date = start_date
-        
-        for i, match in enumerate(playoff_data['matches']):
-            match['fecha'] = current_date.strftime('%Y-%m-%d')
-            match['hora'] = f"{random.randint(16, 20)}:{random.choice(['00', '30'])}"
-            
-            # Avanzar fecha (2-3 partidos por día máximo)
-            if (i + 1) % 2 == 0:
-                current_date += timedelta(days=1)
-        
-        return playoff_data
 
 @st.cache_data
 def load_data():
@@ -323,6 +157,254 @@ def load_data():
             "datos": []
         }
 
+def get_zona_from_group_name(group_name):
+    """Determina la zona correcta basándose en el nombre del grupo"""
+    group_upper = group_name.upper()
+    
+    if "CENTRO OESTE" in group_upper:
+        return "CENTRO"
+    elif "NORTE" in group_upper:
+        return "NORTE"
+    elif "CENTRO" in group_upper:
+        return "CENTRO"
+    elif "OESTE" in group_upper:
+        return "OESTE"
+    elif "SUR" in group_upper:
+        return "SUR"
+    else:
+        # Fallback: usar la primera palabra
+        return group_name.split()[0].upper()
+
+def get_clasificados_por_zona(grupos, zona):
+    """Obtiene los 16 clasificados de una zona específica"""
+    # Filtrar grupos de la zona
+    grupos_zona = [g for g in grupos if get_zona_from_group_name(g['nombre']) == zona]
+    
+    if not grupos_zona:
+        return []
+    
+    primeros = []
+    segundos = []
+    terceros = []
+    
+    # Obtener equipos por posición
+    for grupo in grupos_zona:
+        clasificacion = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
+        
+        if len(clasificacion) >= 1:
+            equipo = clasificacion[0].copy()
+            equipo['zona_grupo'] = grupo['nombre']
+            equipo['tipo_clasificacion'] = "1º puesto"
+            primeros.append(equipo)
+        
+        if len(clasificacion) >= 2:
+            equipo = clasificacion[1].copy()
+            equipo['zona_grupo'] = grupo['nombre']
+            equipo['tipo_clasificacion'] = "2º puesto"
+            segundos.append(equipo)
+            
+        if len(clasificacion) >= 3:
+            equipo = clasificacion[2].copy()
+            equipo['zona_grupo'] = grupo['nombre']
+            equipo['tipo_clasificacion'] = "3º puesto"
+            terceros.append(equipo)
+    
+    # Ordenar por criterios de desempate
+    def sort_teams(teams):
+        return sorted(teams, key=lambda x: (
+            -x['puntos_totales'],
+            -x['partidos_ganados'],
+            -(x['puntos_favor'] - x['puntos_contra']),
+            -x['puntos_favor']
+        ))
+    
+    primeros = sort_teams(primeros)
+    segundos = sort_teams(segundos)
+    terceros = sort_teams(terceros)
+    
+    # Determinar cuántos terceros clasifican según la zona
+    if zona == "SUR":
+        terceros_clasifican = 2  # SUR: 7 zonas, 2 terceros
+    else:
+        terceros_clasifican = 4  # NORTE/CENTRO/OESTE: 6 zonas, 4 terceros
+    
+    # Combinar clasificados
+    clasificados = primeros + segundos + terceros[:terceros_clasifican]
+    
+    # Asignar posiciones de playoff (1-16)
+    for i, equipo in enumerate(clasificados):
+        equipo['posicion_playoff'] = i + 1
+    
+    return clasificados[:16]  # Asegurar máximo 16 equipos
+
+def generate_playoff_matchups(clasificados):
+    """Genera los enfrentamientos de playoff: 1vs16, 2vs15, etc."""
+    if len(clasificados) != 16:
+        return []
+    
+    enfrentamientos = []
+    
+    # Crear enfrentamientos: 1vs16, 2vs15, 3vs14, etc.
+    for i in range(8):
+        superior = clasificados[i]
+        inferior = clasificados[15 - i]
+        
+        enfrentamiento = {
+            'numero': i + 1,
+            'equipo_superior': {
+                'nombre': superior['equipo'],
+                'posicion': superior['posicion_playoff'],
+                'zona_grupo': superior['zona_grupo'],
+                'tipo': superior['tipo_clasificacion'],
+                'record': f"{superior['partidos_ganados']}-{superior['partidos_perdidos']}",
+                'puntos_totales': superior['puntos_totales'],
+                'diferencia': superior['puntos_favor'] - superior['puntos_contra']
+            },
+            'equipo_inferior': {
+                'nombre': inferior['equipo'],
+                'posicion': inferior['posicion_playoff'],
+                'zona_grupo': inferior['zona_grupo'],
+                'tipo': inferior['tipo_clasificacion'],
+                'record': f"{inferior['partidos_ganados']}-{inferior['partidos_perdidos']}",
+                'puntos_totales': inferior['puntos_totales'],
+                'diferencia': inferior['puntos_favor'] - inferior['puntos_contra']
+            }
+        }
+        
+        enfrentamientos.append(enfrentamiento)
+    
+    return enfrentamientos
+
+def show_playoff_matchup(enfrentamiento):
+    """Muestra un enfrentamiento individual de playoff"""
+    superior = enfrentamiento['equipo_superior']
+    inferior = enfrentamiento['equipo_inferior']
+    
+    st.markdown(f"""
+    <div class="playoff-card">
+        <h5 style="text-align: center; color: #e74c3c; margin-bottom: 0.5rem;">
+            🏆 ENFRENTAMIENTO #{enfrentamiento['numero']}
+        </h5>
+        
+        <div class="team-superior">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong>#{superior['posicion']} {superior['nombre']}</strong><br>
+                    <small>📍 {superior['zona_grupo']} ({superior['tipo']})</small>
+                </div>
+                <div style="text-align: right;">
+                    <strong>{superior['puntos_totales']} pts</strong><br>
+                    <small>{superior['record']} ({superior['diferencia']:+d})</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="vs-separator">VS</div>
+        
+        <div class="team-inferior">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong>#{inferior['posicion']} {inferior['nombre']}</strong><br>
+                    <small>📍 {inferior['zona_grupo']} ({inferior['tipo']})</small>
+                </div>
+                <div style="text-align: right;">
+                    <strong>{inferior['puntos_totales']} pts</strong><br>
+                    <small>{inferior['record']} ({inferior['diferencia']:+d})</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+def show_playoffs_section(categoria_data, formato_playoff):
+    """Muestra la sección completa de playoffs por zona"""
+    st.markdown(f"""
+    <div class="playoff-header">
+        <h2>🏆 PLAYOFFS - {categoria_data['categoria']}</h2>
+        <p>Enfrentamientos por zona: 1vs16, 2vs15, 3vs14, 4vs13, 5vs12, 6vs11, 7vs10, 8vs9</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    grupos = categoria_data['grupos']
+    
+    # Obtener todas las zonas disponibles
+    zonas_disponibles = list(set([get_zona_from_group_name(g['nombre']) for g in grupos]))
+    zonas_disponibles.sort()
+    
+    # Mostrar información general
+    st.markdown("### 📊 Información General")
+    st.info("**Sistema de Playoffs:** Cada zona clasifica 16 equipos (primeros + segundos + mejores terceros) que se enfrentan en eliminación directa a partido único.")
+    
+    # Procesar cada zona
+    for zona in zonas_disponibles:
+        st.markdown(f"""
+        <div class="zona-playoff-header">
+            <h3>🏀 ZONA {zona} - PLAYOFFS</h3>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Obtener clasificados de la zona
+        clasificados = get_clasificados_por_zona(grupos, zona)
+        
+        if len(clasificados) < 16:
+            st.warning(f"⚠️ Zona {zona}: Solo {len(clasificados)} equipos clasificados. Se necesitan 16 para playoffs completos.")
+            continue
+        
+        # Mostrar estadísticas de la zona
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            primeros = len([e for e in clasificados if e['tipo_clasificacion'] == "1º puesto"])
+            st.metric("Primeros", primeros)
+        
+        with col2:
+            segundos = len([e for e in clasificados if e['tipo_clasificacion'] == "2º puesto"])
+            st.metric("Segundos", segundos)
+        
+        with col3:
+            terceros = len([e for e in clasificados if e['tipo_clasificacion'] == "3º puesto"])
+            st.metric("Terceros", terceros)
+        
+        with col4:
+            invictos = len([e for e in clasificados if e['partidos_perdidos'] == 0])
+            st.metric("Invictos", invictos)
+        
+        # Generar enfrentamientos
+        enfrentamientos = generate_playoff_matchups(clasificados)
+        
+        if enfrentamientos:
+            st.markdown(f"#### ⚔️ Enfrentamientos - Zona {zona}")
+            
+            # Mostrar enfrentamientos en dos columnas
+            col1, col2 = st.columns(2)
+            
+            for i, enfrentamiento in enumerate(enfrentamientos):
+                with col1 if i % 2 == 0 else col2:
+                    show_playoff_matchup(enfrentamiento)
+        
+        # Mostrar tabla de clasificados
+        with st.expander(f"📋 Ver tabla completa de clasificados - Zona {zona}", expanded=False):
+            data = []
+            for equipo in clasificados:
+                data.append({
+                    'Pos': equipo['posicion_playoff'],
+                    'Equipo': equipo['equipo'],
+                    'Grupo': equipo['zona_grupo'],
+                    'Tipo': equipo['tipo_clasificacion'],
+                    'J': equipo['partidos_jugados'],
+                    'G': equipo['partidos_ganados'],
+                    'P': equipo['partidos_perdidos'],
+                    'PF': equipo['puntos_favor'],
+                    'PC': equipo['puntos_contra'],
+                    'Diff': f"{equipo['puntos_favor'] - equipo['puntos_contra']:+d}",
+                    'Pts': equipo['puntos_totales']
+                })
+            
+            df = pd.DataFrame(data)
+            st.dataframe(df, use_container_width=True)
+        
+        st.markdown("---")
+
 def calculate_diff(pf, pc):
     """Calcula la diferencia de puntos"""
     return pf - pc
@@ -338,7 +420,7 @@ def format_racha(racha):
 
 def classify_teams_by_region(grupos, region_name):
     """Clasifica equipos por región según el sistema FeBAMBA"""
-    region_grupos = [g for g in grupos if region_name.upper() in g['nombre'].upper()]
+    region_grupos = [g for g in grupos if get_zona_from_group_name(g['nombre']) == region_name.upper()]
     
     primeros = []
     segundos = []
@@ -417,187 +499,6 @@ def show_team_table(teams, title, classification_spots=None):
     
     st.write(styled_df.to_html(escape=False, index=False), unsafe_allow_html=True)
 
-def show_playoff_matchup(match):
-    """Muestra un enfrentamiento de playoff"""
-    local = match['local']
-    visitante = match['visitante']
-    
-    with st.container():
-        st.markdown(f"""
-        <div class="playoff-card">
-            <h4 style="text-align: center; color: #e74c3c;">ENFRENTAMIENTO #{match['match_id']}</h4>
-            
-            <div class="team-local">
-                <strong>🏠 LOCAL: {local['equipo']}</strong><br>
-                📍 {local['descripcion']}<br>
-                📊 Record: {local['partidos_ganados']}G-{local['partidos_perdidos']}P ({local['puntos_totales']} pts)<br>
-                ⚖️ Diferencia: {local['diferencia_puntos']:+d} puntos
-            </div>
-            
-            <div class="vs-separator">VS</div>
-            
-            <div class="team-visitante">
-                <strong>✈️ VISITANTE: {visitante['equipo']}</strong><br>
-                📍 {visitante['descripcion']}<br>
-                📊 Record: {visitante['partidos_ganados']}G-{visitante['partidos_perdidos']}P ({visitante['puntos_totales']} pts)<br>
-                ⚖️ Diferencia: {visitante['diferencia_puntos']:+d} puntos
-            </div>
-            
-            <div style="text-align: center; margin-top: 1rem; font-style: italic; color: #666;">
-                {match['description']}
-                {f"<br>📅 {match['fecha']} - {match['hora']}" if match.get('fecha') else ""}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-def show_playoffs_section(categoria_data, formato_playoff):
-    """Muestra la sección completa de playoffs"""
-    st.markdown(f"""
-    <div class="playoff-header">
-        <h2>🏆 SISTEMA DE PLAYOFFS - {categoria_data['categoria']}</h2>
-        <p>Generación automática de enfrentamientos</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    grupos = categoria_data['grupos']
-    generator = PlayoffGenerator()
-    
-    # Mapear formato desde el sidebar al formato interno
-    formato_map = {
-        "🥇vs🥉 Primeros vs Terceros": "1vs3",
-        "🥇vs🥈 Primeros vs Segundos": "1vs2", 
-        "🔄 Todos los Primeros": "round_robin"
-    }
-    
-    # Usar el formato pasado como parámetro
-    if formato_playoff in formato_map:
-        selected_format = formato_map[formato_playoff]
-        st.info(f"Formato seleccionado: **{formato_playoff}**")
-    else:
-        # Fallback: selector interactivo si el formato no coincide
-        st.markdown("""
-        <div class="playoff-format-selector">
-            <h4>⚔️ Selecciona el Formato de Playoff</h4>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        format_options = {
-            '1vs3': '🥇vs🥉 Primeros vs Terceros (Recomendado)',
-            '1vs2': '🥇vs🥈 Primeros vs Segundos',
-            'round_robin': '🔄 Round Robin - Todos contra todos'
-        }
-        
-        selected_format = st.selectbox(
-            "Formato de Playoff:",
-            list(format_options.keys()),
-            format_func=lambda x: format_options[x],
-            index=0
-        )
-    
-    col1, col2 = st.columns([2, 1])
-    
-    with col2:
-        generate_schedule = st.checkbox("📅 Generar calendario", value=False)
-        if generate_schedule:
-            start_date = st.date_input(
-                "Fecha de inicio:",
-                value=datetime.now() + timedelta(days=30)
-            )
-    
-    # Generar playoffs según formato seleccionado
-    if st.button("🔥 GENERAR PLAYOFFS", type="primary"):
-        with st.spinner("Generando playoffs..."):
-            if selected_format == '1vs3':
-                playoff_data = generator.generate_1vs3_playoffs(grupos)
-            elif selected_format == '1vs2':
-                playoff_data = generator.generate_1vs2_playoffs(grupos)
-            elif selected_format == 'round_robin':
-                playoff_data = generator.generate_round_robin_playoffs(grupos, [1])
-            
-            # Generar calendario si está seleccionado
-            if generate_schedule:
-                playoff_data = generator.generate_playoff_schedule(playoff_data, start_date.strftime('%Y-%m-%d'))
-        
-        # Mostrar estadísticas del playoff
-        st.markdown("### 📊 Resumen del Playoff")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.metric("Formato", playoff_data['description'])
-        with col2:
-            st.metric("Total Partidos", playoff_data['total_matches'])
-        with col3:
-            st.metric("Equipos Participantes", playoff_data['participating_teams'])
-        
-        # Mostrar enfrentamientos
-        st.markdown("### ⚔️ Enfrentamientos")
-        
-        # Tabs para organizar por fechas si hay calendario
-        if playoff_data['matches'] and playoff_data['matches'][0].get('fecha'):
-            fechas = list(set(match['fecha'] for match in playoff_data['matches']))
-            fechas.sort()
-            
-            if len(fechas) > 1:
-                tabs = st.tabs([f"📅 {fecha}" for fecha in fechas])
-                
-                for i, fecha in enumerate(fechas):
-                    with tabs[i]:
-                        matches_fecha = [m for m in playoff_data['matches'] if m['fecha'] == fecha]
-                        for match in matches_fecha:
-                            show_playoff_matchup(match)
-            else:
-                for match in playoff_data['matches']:
-                    show_playoff_matchup(match)
-        else:
-            for match in playoff_data['matches']:
-                show_playoff_matchup(match)
-        
-        # Exportar datos
-        with st.expander("💾 Exportar Datos del Playoff", expanded=False):
-            playoff_json = json.dumps(playoff_data, ensure_ascii=False, indent=2)
-            st.download_button(
-                label="⬇️ Descargar JSON",
-                data=playoff_json,
-                file_name=f"playoff_{categoria_data['categoria'].lower().replace(' ', '_')}_{selected_format}.json",
-                mime="application/json"
-            )
-            
-            # Crear resumen en texto
-            texto_resumen = f"""
-PLAYOFF - {categoria_data['categoria']}
-{'='*50}
-Formato: {playoff_data['description']}
-Total partidos: {playoff_data['total_matches']}
-Equipos participantes: {playoff_data['participating_teams']}
-
-ENFRENTAMIENTOS:
-{'-'*30}
-"""
-            for match in playoff_data['matches']:
-                local = match['local']
-                visitante = match['visitante']
-                fecha_info = f"{match['fecha']} - {match['hora']}" if match.get('fecha') else "Sin fecha"
-                
-                texto_resumen += f"""
-Enfrentamiento #{match['match_id']} - {fecha_info}
-🏠 {local['equipo']} ({local['descripcion']})
-   Record: {local['partidos_ganados']}G-{local['partidos_perdidos']}P
-   Puntos: {local['puntos_totales']} ({local['diferencia_puntos']:+d})
-
-✈️  {visitante['equipo']} ({visitante['descripcion']})
-   Record: {visitante['partidos_ganados']}G-{visitante['partidos_perdidos']}P
-   Puntos: {visitante['puntos_totales']} ({visitante['diferencia_puntos']:+d})
-
-{'-'*50}
-"""
-            
-            st.download_button(
-                label="⬇️ Descargar TXT",
-                data=texto_resumen,
-                file_name=f"playoff_{categoria_data['categoria'].lower().replace(' ', '_')}_{selected_format}.txt",
-                mime="text/plain"
-            )
-
 def show_general_summary(grupos, regiones):
     """Muestra resumen general de todas las regiones"""
     st.markdown("## 📊 Resumen General por Regiones")
@@ -606,7 +507,7 @@ def show_general_summary(grupos, regiones):
     
     for i, region in enumerate(regiones):
         with cols[i % 4]:
-            region_grupos = [g for g in grupos if region.upper() in g['nombre'].upper()]
+            region_grupos = [g for g in grupos if get_zona_from_group_name(g['nombre']) == region.upper()]
             total_equipos = sum(len(g['clasificacion']) for g in region_grupos)
             invictos = sum(1 for g in region_grupos for equipo in g['clasificacion'] 
                           if equipo['partidos_perdidos'] == 0 and equipo['partidos_jugados'] > 0)
@@ -702,7 +603,7 @@ def show_region_details(grupos, region_name):
     
     # Estadísticas de la región
     st.markdown("### 📈 Estadísticas de la Región")
-    region_grupos = [g for g in grupos if region_name.upper() in g['nombre'].upper()]
+    region_grupos = [g for g in grupos if get_zona_from_group_name(g['nombre']) == region_name.upper()]
     
     col1, col2, col3 = st.columns(3)
     
@@ -768,17 +669,9 @@ def main():
         ["📊 Clasificaciones", "🏆 Playoffs"]
     )
     
-    # Selector de formato de playoff si está en la sección playoffs
-    if seccion_principal == "🏆 Playoffs":
-        formato_playoff = st.sidebar.selectbox(
-            "Formato de Playoff:",
-            ["🥇vs🥉 Primeros vs Terceros", "🥇vs🥈 Primeros vs Segundos", "🔄 Todos los Primeros"],
-            index=0
-        )
-    
     if seccion_principal == "📊 Clasificaciones":
         # Selector de región para clasificaciones
-        regiones_disponibles = list(set([g['nombre'].split()[0] for g in grupos]))
+        regiones_disponibles = list(set([get_zona_from_group_name(g['nombre']) for g in grupos]))
         regiones_disponibles.sort()
         
         region_view = st.sidebar.selectbox(
@@ -807,7 +700,7 @@ def main():
             show_region_details(grupos, region_name)
     
     elif seccion_principal == "🏆 Playoffs":
-        show_playoffs_section(categoria_data, formato_playoff)
+        show_playoffs_section(categoria_data, None)
 
 if __name__ == "__main__":
     main()
