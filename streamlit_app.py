@@ -183,41 +183,43 @@ def get_clasificados_por_zona(grupos, zona):
     if not grupos_zona:
         return []
     
-    # Obtener TODOS los equipos de la zona primero
-    todos_los_equipos = []
+    primeros = []
+    segundos = []
+    terceros = []
     
+    # Obtener equipos por posición en cada grupo
     for grupo in grupos_zona:
-        for equipo in grupo['clasificacion']:
-            equipo_copia = equipo.copy()
-            equipo_copia['zona_grupo'] = grupo['nombre']
-            equipo_copia['posicion_grupo'] = equipo['posicion']  # Posición en su grupo
-            todos_los_equipos.append(equipo_copia)
+        clasificacion = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
+        
+        if len(clasificacion) >= 1:
+            equipo = clasificacion[0].copy()
+            equipo['zona_grupo'] = grupo['nombre']
+            equipo['tipo_clasificacion'] = "1º puesto"
+            primeros.append(equipo)
+        
+        if len(clasificacion) >= 2:
+            equipo = clasificacion[1].copy()
+            equipo['zona_grupo'] = grupo['nombre']
+            equipo['tipo_clasificacion'] = "2º puesto"
+            segundos.append(equipo)
+            
+        if len(clasificacion) >= 3:
+            equipo = clasificacion[2].copy()
+            equipo['zona_grupo'] = grupo['nombre']
+            equipo['tipo_clasificacion'] = "3º puesto"
+            terceros.append(equipo)
     
-    # Separar por posición en grupo para aplicar reglas de clasificación
-    primeros = [e for e in todos_los_equipos if e['posicion_grupo'] == 1]
-    segundos = [e for e in todos_los_equipos if e['posicion_grupo'] == 2]  
-    terceros = [e for e in todos_los_equipos if e['posicion_grupo'] == 3]
-    
-    # Ordenar cada grupo por criterios de desempate
-    def sort_teams(teams):
+    # CORRECCIÓN: Ordenar correctamente por puntos, diferencia y puntos a favor
+    def sort_teams_correctly(teams):
         return sorted(teams, key=lambda x: (
-            -x['puntos_totales'],
-            -x['partidos_ganados'],
-            -(x['puntos_favor'] - x['puntos_contra']),
-            -x['puntos_favor']
+            -x['puntos_totales'],                           # 1º criterio: puntos totales
+            -(x['puntos_favor'] - x['puntos_contra']),      # 2º criterio: diferencia de puntos  
+            -x['puntos_favor']                              # 3º criterio: puntos a favor
         ))
     
-    primeros = sort_teams(primeros)
-    segundos = sort_teams(segundos)
-    terceros = sort_teams(terceros)
-    
-    # Asignar tipo de clasificación
-    for equipo in primeros:
-        equipo['tipo_clasificacion'] = "1º puesto"
-    for equipo in segundos:
-        equipo['tipo_clasificacion'] = "2º puesto"
-    for equipo in terceros:
-        equipo['tipo_clasificacion'] = "3º puesto"
+    primeros = sort_teams_correctly(primeros)
+    segundos = sort_teams_correctly(segundos)
+    terceros = sort_teams_correctly(terceros)
     
     # Determinar cuántos terceros clasifican según la zona
     if zona == "SUR":
@@ -225,16 +227,11 @@ def get_clasificados_por_zona(grupos, zona):
     else:
         terceros_clasifican = 4  # NORTE/CENTRO/OESTE: 6 zonas, 4 terceros
     
-    # IMPORTANTE: Combinar clasificados y crear ranking final
+    # Combinar clasificados manteniendo el orden correcto
     clasificados = primeros + segundos + terceros[:terceros_clasifican]
     
-    # Ordenar TODA la lista final por criterios globales para crear el ranking 1-16
-    clasificados_finales = sorted(clasificados, key=lambda x: (
-        -x['puntos_totales'],
-        -x['partidos_ganados'], 
-        -(x['puntos_favor'] - x['puntos_contra']),
-        -x['puntos_favor']
-    ))
+    # Ordenar la lista final para crear el ranking 1-16 de toda la zona
+    clasificados_finales = sort_teams_correctly(clasificados)
     
     # Asignar posiciones finales de playoff (1-16)
     for i, equipo in enumerate(clasificados_finales):
@@ -508,26 +505,35 @@ def classify_teams_by_region(grupos, region_name):
     terceros = []
     
     for grupo in region_grupos:
-        clasificacion = sorted(grupo['clasificacion'], key=lambda x: (
-            -x['puntos_totales'],
-            -(x['puntos_favor'] - x['puntos_contra']),
-            -x['puntos_favor']
-        ))
+        clasificacion = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
         
         if len(clasificacion) >= 1:
-            primeros.append({**clasificacion[0], 'zona': grupo['nombre']})
+            equipo = clasificacion[0].copy()
+            equipo['zona'] = grupo['nombre']
+            primeros.append(equipo)
         if len(clasificacion) >= 2:
-            segundos.append({**clasificacion[1], 'zona': grupo['nombre']})
+            equipo = clasificacion[1].copy()
+            equipo['zona'] = grupo['nombre']
+            segundos.append(equipo)
         if len(clasificacion) >= 3:
-            terceros.append({**clasificacion[2], 'zona': grupo['nombre']})
+            equipo = clasificacion[2].copy()
+            equipo['zona'] = grupo['nombre']
+            terceros.append(equipo)
     
-    terceros_sorted = sorted(terceros, key=lambda x: (
-        -x['puntos_totales'],
-        -(x['puntos_favor'] - x['puntos_contra']),
-        -x['puntos_favor']
-    ))
+    # CORRECCIÓN: Ordenar TODAS las tablas por puntos totales, diferencia y puntos a favor
+    def sort_teams_correctly(teams):
+        return sorted(teams, key=lambda x: (
+            -x['puntos_totales'],                           # 1º criterio: puntos totales (descendente)
+            -(x['puntos_favor'] - x['puntos_contra']),      # 2º criterio: diferencia de puntos (descendente)
+            -x['puntos_favor']                              # 3º criterio: puntos a favor (descendente)
+        ))
     
-    return primeros, segundos, terceros_sorted
+    # Aplicar ordenamiento correcto a TODAS las categorías
+    primeros_sorted = sort_teams_correctly(primeros)
+    segundos_sorted = sort_teams_correctly(segundos)
+    terceros_sorted = sort_teams_correctly(terceros)
+    
+    return primeros_sorted, segundos_sorted, terceros_sorted
 
 def show_team_table(teams, title, classification_spots=None):
     """Muestra tabla de equipos con formato"""
