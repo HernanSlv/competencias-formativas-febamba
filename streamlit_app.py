@@ -504,36 +504,45 @@ def classify_teams_by_region(grupos, region_name):
     segundos = []
     terceros = []
     
+    # IMPORTANTE: Obtener equipos por posición en cada grupo PERO sin pre-ordenar
     for grupo in region_grupos:
-        clasificacion = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
+        # Tomar clasificacion tal como viene del JSON (ya tiene las posiciones correctas por grupo)
+        clasificacion = grupo['clasificacion']  
         
-        if len(clasificacion) >= 1:
-            equipo = clasificacion[0].copy()
+        # Encontrar por posición, no por índice
+        primer_puesto = next((equipo for equipo in clasificacion if equipo['posicion'] == 1), None)
+        segundo_puesto = next((equipo for equipo in clasificacion if equipo['posicion'] == 2), None)  
+        tercer_puesto = next((equipo for equipo in clasificacion if equipo['posicion'] == 3), None)
+        
+        if primer_puesto:
+            equipo = primer_puesto.copy()
             equipo['zona'] = grupo['nombre']
             primeros.append(equipo)
-        if len(clasificacion) >= 2:
-            equipo = clasificacion[1].copy()
+            
+        if segundo_puesto:
+            equipo = segundo_puesto.copy() 
             equipo['zona'] = grupo['nombre']
             segundos.append(equipo)
-        if len(clasificacion) >= 3:
-            equipo = clasificacion[2].copy()
-            equipo['zona'] = grupo['nombre']
+            
+        if tercer_puesto:
+            equipo = tercer_puesto.copy()
+            equipo['zona'] = grupo['nombre'] 
             terceros.append(equipo)
     
-    # CORRECCIÓN: Ordenar TODAS las tablas por puntos totales, diferencia y puntos a favor
-    def sort_teams_correctly(teams):
+    # CORRECCIÓN CRÍTICA: Ordenar TODAS las listas por rendimiento real
+    def sort_teams_by_performance(teams):
         return sorted(teams, key=lambda x: (
-            -x['puntos_totales'],                           # 1º criterio: puntos totales (descendente)
-            -(x['puntos_favor'] - x['puntos_contra']),      # 2º criterio: diferencia de puntos (descendente)
-            -x['puntos_favor']                              # 3º criterio: puntos a favor (descendente)
+            -x['puntos_totales'],                           # 1º: Puntos totales (más puntos primero)
+            -(x['puntos_favor'] - x['puntos_contra']),      # 2º: Diferencia de puntos (mejor diferencia primero)  
+            -x['puntos_favor']                              # 3º: Puntos a favor (más puntos a favor primero)
         ))
     
-    # Aplicar ordenamiento correcto a TODAS las categorías
-    primeros_sorted = sort_teams_correctly(primeros)
-    segundos_sorted = sort_teams_correctly(segundos)
-    terceros_sorted = sort_teams_correctly(terceros)
+    # Aplicar ordenamiento a TODAS las categorías
+    primeros_ordenados = sort_teams_by_performance(primeros)
+    segundos_ordenados = sort_teams_by_performance(segundos)
+    terceros_ordenados = sort_teams_by_performance(terceros)
     
-    return primeros_sorted, segundos_sorted, terceros_sorted
+    return primeros_ordenados, segundos_ordenados, terceros_ordenados
 
 def show_team_table(teams, title, classification_spots=None):
     """Muestra tabla de equipos con formato"""
