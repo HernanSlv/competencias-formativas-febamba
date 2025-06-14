@@ -366,302 +366,6 @@ def classify_teams_by_region(grupos, region_name):
     
     return primeros, segundos, terceros_sorted
 
-def generate_playoffs_from_data(grupos, formato="1vs3"):
-    """Genera playoffs directamente desde los datos del JSON"""
-    
-    # Obtener equipos por posición
-    primeros = []
-    segundos = []
-    terceros = []
-    
-    for grupo in grupos:
-        zona = grupo['nombre']
-        standings = sorted(grupo['clasificacion'], key=lambda x: x['posicion'])
-        
-        if len(standings) >= 1:
-            equipo = standings[0].copy()
-            equipo['zona_origen'] = zona
-            primeros.append(equipo)
-        
-        if len(standings) >= 2:
-            equipo = standings[1].copy()
-            equipo['zona_origen'] = zona
-            segundos.append(equipo)
-            
-        if len(standings) >= 3:
-            equipo = standings[2].copy()
-            equipo['zona_origen'] = zona
-            terceros.append(equipo)
-    
-    # Ordenar por criterios de desempate
-    def sort_teams(teams):
-        return sorted(teams, key=lambda x: (
-            -x['puntos_totales'],
-            -x['partidos_ganados'],
-            -(x['puntos_favor'] - x['puntos_contra']),
-            -x['puntos_favor']
-        ))
-    
-    primeros = sort_teams(primeros)
-    segundos = sort_teams(segundos)
-    terceros = sort_teams(terceros)
-    
-    playoffs = []
-    
-    if formato == "1vs3":
-        # Mejor 1º vs peor 3º, segundo mejor 1º vs segundo peor 3º, etc.
-        terceros_invertidos = terceros[::-1]
-        min_teams = min(len(primeros), len(terceros))
-        
-        for i in range(min_teams):
-            playoff = {
-                'enfrentamiento': i + 1,
-                'local': {
-                    'equipo': primeros[i]['equipo'],
-                    'zona': primeros[i]['zona_origen'],
-                    'posicion': '1º puesto',
-                    'record': f"{primeros[i]['partidos_ganados']}-{primeros[i]['partidos_perdidos']}",
-                    'puntos_totales': primeros[i]['puntos_totales'],
-                    'diferencia': primeros[i]['puntos_favor'] - primeros[i]['puntos_contra']
-                },
-                'visitante': {
-                    'equipo': terceros_invertidos[i]['equipo'],
-                    'zona': terceros_invertidos[i]['zona_origen'],
-                    'posicion': '3º puesto',
-                    'record': f"{terceros_invertidos[i]['partidos_ganados']}-{terceros_invertidos[i]['partidos_perdidos']}",
-                    'puntos_totales': terceros_invertidos[i]['puntos_totales'],
-                    'diferencia': terceros_invertidos[i]['puntos_favor'] - terceros_invertidos[i]['puntos_contra']
-                },
-                'descripcion': f"#{i+1} de primeros vs #{len(terceros_invertidos)-i} de terceros"
-            }
-            playoffs.append(playoff)
-    
-    elif formato == "1vs2":
-        # Mejor 1º vs peor 2º
-        segundos_invertidos = segundos[::-1]
-        min_teams = min(len(primeros), len(segundos))
-        
-        for i in range(min_teams):
-            playoff = {
-                'enfrentamiento': i + 1,
-                'local': {
-                    'equipo': primeros[i]['equipo'],
-                    'zona': primeros[i]['zona_origen'],
-                    'posicion': '1º puesto',
-                    'record': f"{primeros[i]['partidos_ganados']}-{primeros[i]['partidos_perdidos']}",
-                    'puntos_totales': primeros[i]['puntos_totales'],
-                    'diferencia': primeros[i]['puntos_favor'] - primeros[i]['puntos_contra']
-                },
-                'visitante': {
-                    'equipo': segundos_invertidos[i]['equipo'],
-                    'zona': segundos_invertidos[i]['zona_origen'],
-                    'posicion': '2º puesto',
-                    'record': f"{segundos_invertidos[i]['partidos_ganados']}-{segundos_invertidos[i]['partidos_perdidos']}",
-                    'puntos_totales': segundos_invertidos[i]['puntos_totales'],
-                    'diferencia': segundos_invertidos[i]['puntos_favor'] - segundos_invertidos[i]['puntos_contra']
-                },
-                'descripcion': f"#{i+1} de primeros vs #{len(segundos_invertidos)-i} de segundos"
-            }
-            playoffs.append(playoff)
-    
-    elif formato == "round_robin":
-        # Todos los primeros entre sí
-        for i in range(len(primeros)):
-            for j in range(i + 1, len(primeros)):
-                playoff = {
-                    'enfrentamiento': len(playoffs) + 1,
-                    'local': {
-                        'equipo': primeros[i]['equipo'],
-                        'zona': primeros[i]['zona_origen'],
-                        'posicion': '1º puesto',
-                        'record': f"{primeros[i]['partidos_ganados']}-{primeros[i]['partidos_perdidos']}",
-                        'puntos_totales': primeros[i]['puntos_totales'],
-                        'diferencia': primeros[i]['puntos_favor'] - primeros[i]['puntos_contra']
-                    },
-                    'visitante': {
-                        'equipo': primeros[j]['equipo'],
-                        'zona': primeros[j]['zona_origen'],
-                        'posicion': '1º puesto',
-                        'record': f"{primeros[j]['partidos_ganados']}-{primeros[j]['partidos_perdidos']}",
-                        'puntos_totales': primeros[j]['puntos_totales'],
-                        'diferencia': primeros[j]['puntos_favor'] - primeros[j]['puntos_contra']
-                    },
-                    'descripcion': "Round Robin entre primeros puestos"
-                }
-                playoffs.append(playoff)
-    
-    return playoffs
-
-def show_playoff_matchup(playoff):
-    """Muestra un enfrentamiento de playoff"""
-    local = playoff['local']
-    visitante = playoff['visitante']
-    
-    st.markdown(f"""
-    <div class="playoff-card">
-        <h4 style="text-align: center; color: #e74c3c; margin-bottom: 1rem;">
-            🏆 ENFRENTAMIENTO #{playoff['enfrentamiento']}
-        </h4>
-        
-        <div class="team-local">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <strong>🏠 {local['equipo']}</strong><br>
-                    <small>📍 {local['zona']} ({local['posicion']})</small>
-                </div>
-                <div style="text-align: right;">
-                    <strong>{local['puntos_totales']} pts</strong><br>
-                    <small>{local['record']} ({local['diferencia']:+d})</small>
-                </div>
-            </div>
-        </div>
-        
-        <div class="vs-separator">VS</div>
-        
-        <div class="team-visitante">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <strong>✈️ {visitante['equipo']}</strong><br>
-                    <small>📍 {visitante['zona']} ({visitante['posicion']})</small>
-                </div>
-                <div style="text-align: right;">
-                    <strong>{visitante['puntos_totales']} pts</strong><br>
-                    <small>{visitante['record']} ({visitante['diferencia']:+d})</small>
-                </div>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 1rem; font-style: italic; color: #666; font-size: 0.9rem;">
-            {playoff['descripcion']}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-def show_playoffs_section(categoria_data, formato_playoff):
-    """Muestra la sección completa de playoffs"""
-    st.markdown(f"""
-    <div class="playoff-header">
-        <h2>🏆 PLAYOFFS - {categoria_data['categoria']}</h2>
-        <p>Enfrentamientos generados automáticamente</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    grupos = categoria_data['grupos']
-    
-    # Mapear formato
-    formato_map = {
-        "🥇vs🥉 Primeros vs Terceros": "1vs3",
-        "🥇vs🥈 Primeros vs Segundos": "1vs2", 
-        "🔄 Todos los Primeros": "round_robin"
-    }
-    formato = formato_map[formato_playoff]
-    
-    # Generar playoffs
-    playoffs = generate_playoffs_from_data(grupos, formato)
-    
-    if not playoffs:
-        st.warning("No se pudieron generar playoffs para esta categoría.")
-        return
-    
-    # Mostrar información del formato
-    st.markdown("### 📋 Información del Formato")
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Formato", formato_playoff.split(" ", 1)[1])
-    with col2:
-        st.metric("Total Enfrentamientos", len(playoffs))
-    with col3:
-        equipos_participantes = len(set([p['local']['equipo'] for p in playoffs] + [p['visitante']['equipo'] for p in playoffs]))
-        st.metric("Equipos Participantes", equipos_participantes)
-    
-    # Explicación del sistema
-    if formato == "1vs3":
-        st.info("""
-        **🥇vs🥉 Sistema Primeros vs Terceros (Estándar):**
-        - El mejor 1º juega contra el peor 3º
-        - El segundo mejor 1º juega contra el segundo peor 3º
-        - Y así sucesivamente...
-        - Los primeros puestos juegan de locales
-        """)
-    elif formato == "1vs2":
-        st.info("""
-        **🥇vs🥈 Sistema Primeros vs Segundos:**
-        - El mejor 1º juega contra el peor 2º
-        - El segundo mejor 1º juega contra el segundo peor 2º
-        - Y así sucesivamente...
-        - Los primeros puestos juegan de locales
-        """)
-    elif formato == "round_robin":
-        st.info("""
-        **🔄 Round Robin entre Primeros:**
-        - Todos los primeros puestos juegan entre sí
-        - Cada equipo juega contra todos los demás una vez
-        - Sistema de todos contra todos
-        """)
-    
-    # Mostrar enfrentamientos
-    st.markdown("### ⚔️ Enfrentamientos")
-    
-    # Mostrar en columnas si hay muchos enfrentamientos
-    if len(playoffs) <= 4:
-        for playoff in playoffs:
-            show_playoff_matchup(playoff)
-    else:
-        # Dividir en columnas para mejor visualización
-        cols = st.columns(2)
-        for i, playoff in enumerate(playoffs):
-            with cols[i % 2]:
-                show_playoff_matchup(playoff)
-    
-    # Estadísticas adicionales
-    st.markdown("### 📊 Estadísticas de los Playoffs")
-    
-    # Contar equipos por zona
-    zonas_count = {}
-    for playoff in playoffs:
-        zona_local = playoff['local']['zona'].split()[0]  # Tomar primera palabra (SUR, NORTE, etc.)
-        zona_visitante = playoff['visitante']['zona'].split()[0]
-        
-        zonas_count[zona_local] = zonas_count.get(zona_local, 0) + 1
-        zonas_count[zona_visitante] = zonas_count.get(zona_visitante, 0) + 1
-    
-    if zonas_count:
-        st.markdown("**Participación por Región:**")
-        cols = st.columns(len(zonas_count))
-        for i, (zona, count) in enumerate(zonas_count.items()):
-            with cols[i]:
-                st.metric(f"🏀 {zona}", f"{count} equipos")
-    
-    # Equipos invictos en playoffs
-    equipos_invictos = []
-    for playoff in playoffs:
-        if playoff['local']['record'].endswith('-0'):
-            equipos_invictos.append(f"{playoff['local']['equipo']} ({playoff['local']['zona']})")
-        if playoff['visitante']['record'].endswith('-0'):
-            equipos_invictos.append(f"{playoff['visitante']['equipo']} ({playoff['visitante']['zona']})")
-    
-    if equipos_invictos:
-        st.markdown("**🏆 Equipos Invictos en Playoffs:**")
-        for equipo in set(equipos_invictos):  # Eliminar duplicados
-            st.write(f"• {equipo}")
-    
-    # Mejores equipos
-    todos_equipos = []
-    for playoff in playoffs:
-        todos_equipos.append(playoff['local'])
-        todos_equipos.append(playoff['visitante'])
-    
-    # Eliminar duplicados y ordenar
-    equipos_unicos = {eq['equipo']: eq for eq in todos_equipos}.values()
-    mejores_equipos = sorted(equipos_unicos, key=lambda x: (-x['puntos_totales'], -x['diferencia']))[:3]
-    
-    if mejores_equipos:
-        st.markdown("**🥇 Top 3 Equipos en Playoffs:**")
-        for i, equipo in enumerate(mejores_equipos):
-            emoji = ["🥇", "🥈", "🥉"][i]
-            st.write(f"{emoji} **{equipo['equipo']}** ({equipo['zona']}) - {equipo['puntos_totales']} pts ({equipo['diferencia']:+d})")
-
 def show_team_table(teams, title, classification_spots=None):
     """Muestra tabla de equipos con formato"""
     if not teams:
@@ -746,7 +450,7 @@ def show_playoff_matchup(match):
         </div>
         """, unsafe_allow_html=True)
 
-def show_playoffs_section(categoria_data):
+def show_playoffs_section(categoria_data, formato_playoff):
     """Muestra la sección completa de playoffs"""
     st.markdown(f"""
     <div class="playoff-header">
@@ -758,25 +462,37 @@ def show_playoffs_section(categoria_data):
     grupos = categoria_data['grupos']
     generator = PlayoffGenerator()
     
-    # Selector de formato de playoff
-    st.markdown("""
-    <div class="playoff-format-selector">
-        <h4>⚔️ Selecciona el Formato de Playoff</h4>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    format_options = {
-        '1vs3': '🥇vs🥉 Primeros vs Terceros (Recomendado)',
-        '1vs2': '🥇vs🥈 Primeros vs Segundos',
-        'round_robin': '🔄 Round Robin - Todos contra todos'
+    # Mapear formato desde el sidebar al formato interno
+    formato_map = {
+        "🥇vs🥉 Primeros vs Terceros": "1vs3",
+        "🥇vs🥈 Primeros vs Segundos": "1vs2", 
+        "🔄 Todos los Primeros": "round_robin"
     }
     
-    selected_format = st.selectbox(
-        "Formato de Playoff:",
-        list(format_options.keys()),
-        format_func=lambda x: format_options[x],
-        index=0
-    )
+    # Usar el formato pasado como parámetro
+    if formato_playoff in formato_map:
+        selected_format = formato_map[formato_playoff]
+        st.info(f"Formato seleccionado: **{formato_playoff}**")
+    else:
+        # Fallback: selector interactivo si el formato no coincide
+        st.markdown("""
+        <div class="playoff-format-selector">
+            <h4>⚔️ Selecciona el Formato de Playoff</h4>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        format_options = {
+            '1vs3': '🥇vs🥉 Primeros vs Terceros (Recomendado)',
+            '1vs2': '🥇vs🥈 Primeros vs Segundos',
+            'round_robin': '🔄 Round Robin - Todos contra todos'
+        }
+        
+        selected_format = st.selectbox(
+            "Formato de Playoff:",
+            list(format_options.keys()),
+            format_func=lambda x: format_options[x],
+            index=0
+        )
     
     col1, col2 = st.columns([2, 1])
     
