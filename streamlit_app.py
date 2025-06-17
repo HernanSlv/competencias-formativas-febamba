@@ -508,137 +508,87 @@ def show_playoff_bracket_modal(enfrentamientos, zona):
     """, unsafe_allow_html=True)
     
     # Dividir en pestañas
-    tab1, tab2, tab3 = st.tabs(["🏀 Octavos de Final", "🏆 Rondas Siguientes", "📊 Análisis"])
+    tab1, tab2 = st.tabs(["🏀 Bracket Completo", "📊 Análisis"])
     
     with tab1:
-        st.markdown("### ⚔️ ENFRENTAMIENTOS ELIMINATORIOS")
+        # OCTAVOS DE FINAL
+        st.markdown("### ⚔️ OCTAVOS DE FINAL")
         
-        # Mostrar todos los octavos en un grid
-        for i in range(0, len(enfrentamientos), 2):
-            col1, col2 = st.columns(2)
-            
-            # Partido de la columna izquierda
-            with col1:
-                if i < len(enfrentamientos):
-                    enfrentamiento = enfrentamientos[i]
-                    superior = enfrentamiento['equipo_superior']
-                    inferior = enfrentamiento['equipo_inferior']
-                    
-                    # Container del partido
-                    st.markdown(f"""
-                    <div style="
-                        background: white; 
-                        border-radius: 12px; 
-                        padding: 1.5rem; 
-                        margin: 0.5rem 0;
-                        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                        border-left: 5px solid #e74c3c;
-                    ">
-                        <h4 style="color: #e74c3c; margin: 0 0 1rem 0; text-align: center;">
-                            ⚡ PARTIDO {i+1}
-                        </h4>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    # Equipo superior
-                    if superior['posicion'] <= 4:
-                        st.success(f"🥇 **SEED #{superior['posicion']} - {superior['nombre']}**")
-                    elif superior['posicion'] <= 8:
-                        st.info(f"🥈 **SEED #{superior['posicion']} - {superior['nombre']}**")
-                    else:
-                        st.warning(f"🥉 **SEED #{superior['posicion']} - {superior['nombre']}**")
-                    
-                    st.caption(f"📊 {superior['record']} • {superior['puntos_totales']} pts • {superior['tipo']}")
-                    
-                    # VS
-                    st.markdown("**<center>⚔️ VERSUS ⚔️</center>**", unsafe_allow_html=True)
-                    
-                    # Equipo inferior
-                    if inferior['posicion'] >= 13:
-                        st.error(f"💥 **SEED #{inferior['posicion']} - {inferior['nombre']}**")
-                    elif inferior['posicion'] >= 9:
-                        st.warning(f"⚡ **SEED #{inferior['posicion']} - {inferior['nombre']}**")
-                    else:
-                        st.info(f"🎯 **SEED #{inferior['posicion']} - {inferior['nombre']}**")
-                    
-                    st.caption(f"📊 {inferior['record']} • {inferior['puntos_totales']} pts • {inferior['tipo']}")
-            
-            # Partido de la columna derecha
-            with col2:
-                if i + 1 < len(enfrentamientos):
-                    enfrentamiento = enfrentamientos[i + 1]
-                    superior = enfrentamiento['equipo_superior']
-                    inferior = enfrentamiento['equipo_inferior']
-                    
-                    # Container del partido
-                    st.markdown(f"""
-                    <div style="
-                        background: white; 
-                        border-radius: 12px; 
-                        padding: 1.5rem; 
-                        margin: 0.5rem 0;
-                        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                        border-left: 5px solid #e74c3c;
-                    ">
-                        <h4 style="color: #e74c3c; margin: 0 0 1rem 0; text-align: center;">
-                            ⚡ PARTIDO {i+2}
-                        </h4>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    # Equipo superior
-                    if superior['posicion'] <= 4:
-                        st.success(f"🥇 **SEED #{superior['posicion']} - {superior['nombre']}**")
-                    elif superior['posicion'] <= 8:
-                        st.info(f"🥈 **SEED #{superior['posicion']} - {superior['nombre']}**")
-                    else:
-                        st.warning(f"🥉 **SEED #{superior['posicion']} - {superior['nombre']}**")
-                    
-                    st.caption(f"📊 {superior['record']} • {superior['puntos_totales']} pts • {superior['tipo']}")
-                    
-                    # VS
-                    st.markdown("**<center>⚔️ VERSUS ⚔️</center>**", unsafe_allow_html=True)
-                    
-                    # Equipo inferior
-                    if inferior['posicion'] >= 13:
-                        st.error(f"💥 **SEED #{inferior['posicion']} - {inferior['nombre']}**")
-                    elif inferior['posicion'] >= 9:
-                        st.warning(f"⚡ **SEED #{inferior['posicion']} - {inferior['nombre']}**")
-                    else:
-                        st.info(f"🎯 **SEED #{inferior['posicion']} - {inferior['nombre']}**")
-                    
-                    st.caption(f"📊 {inferior['record']} • {inferior['puntos_totales']} pts • {inferior['tipo']}")
-    
-    with tab2:
-        st.markdown("### 🏆 CAMINO AL TÍTULO")
+        col1, col2, col3, col4 = st.columns(4)
         
-        col1, col2, col3 = st.columns(3)
+        # Dividir los 8 partidos en 4 columnas (2 partidos por columna)
+        for col_idx, col in enumerate([col1, col2, col3, col4]):
+            with col:
+                # Dos partidos por columna
+                for partido_idx in range(2):
+                    enfrentamiento_idx = col_idx * 2 + partido_idx
+                    if enfrentamiento_idx < len(enfrentamientos):
+                        enfrentamiento = enfrentamientos[enfrentamiento_idx]
+                        superior = enfrentamiento['equipo_superior']
+                        inferior = enfrentamiento['equipo_inferior']
+                        
+                        st.info(f"""**Partido {enfrentamiento_idx + 1}**  
+#{superior['posicion']} {superior['nombre']}  
+🆚  
+#{inferior['posicion']} {inferior['nombre']}""")
         
-        with col1:
-            st.markdown("#### ⚡ CUARTOS DE FINAL")
-            cuartos = [
-                ("Ganador P1", "Ganador P8"),
-                ("Ganador P2", "Ganador P7"),
-                ("Ganador P3", "Ganador P6"),
-                ("Ganador P4", "Ganador P5")
-            ]
-            
-            for i, (equipo1, equipo2) in enumerate(cuartos):
-                st.info(f"**Cuarto {i+1}**  \n{equipo1}  \n🆚  \n{equipo2}")
+        st.markdown("---")
+        
+        # CUARTOS DE FINAL
+        st.markdown("### ⚡ CUARTOS DE FINAL")
+        
+        col1, col2, col3, col4 = st.columns(4)
+        
+        cuartos = [
+            ("Ganador P1", "Ganador P8"),
+            ("Ganador P2", "Ganador P7"),
+            ("Ganador P3", "Ganador P6"),
+            ("Ganador P4", "Ganador P5")
+        ]
+        
+        for i, ((equipo1, equipo2), col) in enumerate(zip(cuartos, [col1, col2, col3, col4])):
+            with col:
+                st.warning(f"""**Cuarto {i+1}**  
+{equipo1}  
+🆚  
+{equipo2}""")
+        
+        st.markdown("---")
+        
+        # SEMIFINALES
+        st.markdown("### 🔥 SEMIFINALES")
+        
+        col1, col2, col3, col4 = st.columns(4)
+        
+        semis = [
+            ("Ganador C1", "Ganador C4"),
+            ("Ganador C2", "Ganador C3")
+        ]
         
         with col2:
-            st.markdown("#### 🔥 SEMIFINALES")
-            semis = [
-                ("Ganador C1", "Ganador C4"),
-                ("Ganador C2", "Ganador C3")
-            ]
-            
-            for i, (equipo1, equipo2) in enumerate(semis):
-                st.warning(f"**Semifinal {i+1}**  \n{equipo1}  \n🆚  \n{equipo2}")
+            st.success(f"""**Semifinal 1**  
+{semis[0][0]}  
+🆚  
+{semis[0][1]}""")
         
         with col3:
-            st.markdown("#### 👑 FINAL")
-            st.success("**GRAN FINAL**  \nGanador SF1  \n🆚  \nGanador SF2")
+            st.success(f"""**Semifinal 2**  
+{semis[1][0]}  
+🆚  
+{semis[1][1]}""")
+        
+        st.markdown("---")
+        
+        # FINAL
+        st.markdown("### 👑 FINAL")
+        
+        col1, col2, col3 = st.columns([1, 2, 1])
+        
+        with col2:
+            st.success("""**GRAN FINAL**  
+Ganador SF1  
+🆚  
+Ganador SF2""")
             
             st.markdown(f"""
             <div style="
@@ -656,8 +606,60 @@ def show_playoff_bracket_modal(enfrentamientos, zona):
             </div>
             """, unsafe_allow_html=True)
     
-    with tab3:
+    with tab2:
         st.markdown("### 📊 ANÁLISIS DEL BRACKET")
+        
+        # Mostrar detalles completos de octavos
+        st.markdown("#### ⚔️ DETALLES DE OCTAVOS DE FINAL")
+        
+        for i in range(0, len(enfrentamientos), 2):
+            col1, col2 = st.columns(2)
+            
+            # Partido izquierdo
+            with col1:
+                if i < len(enfrentamientos):
+                    enfrentamiento = enfrentamientos[i]
+                    superior = enfrentamiento['equipo_superior']
+                    inferior = enfrentamiento['equipo_inferior']
+                    
+                    if superior['posicion'] <= 4:
+                        st.success(f"""**⚡ PARTIDO {i+1}**  
+🥇 **SEED #{superior['posicion']} - {superior['nombre']}**  
+📊 {superior['record']} • {superior['puntos_totales']} pts • {superior['tipo']}  
+**🆚**  
+💥 **SEED #{inferior['posicion']} - {inferior['nombre']}**  
+📊 {inferior['record']} • {inferior['puntos_totales']} pts • {inferior['tipo']}""")
+                    else:
+                        st.info(f"""**⚡ PARTIDO {i+1}**  
+🥈 **SEED #{superior['posicion']} - {superior['nombre']}**  
+📊 {superior['record']} • {superior['puntos_totales']} pts • {superior['tipo']}  
+**🆚**  
+⚡ **SEED #{inferior['posicion']} - {inferior['nombre']}**  
+📊 {inferior['record']} • {inferior['puntos_totales']} pts • {inferior['tipo']}""")
+            
+            # Partido derecho
+            with col2:
+                if i + 1 < len(enfrentamientos):
+                    enfrentamiento = enfrentamientos[i + 1]
+                    superior = enfrentamiento['equipo_superior']
+                    inferior = enfrentamiento['equipo_inferior']
+                    
+                    if superior['posicion'] <= 4:
+                        st.success(f"""**⚡ PARTIDO {i+2}**  
+🥇 **SEED #{superior['posicion']} - {superior['nombre']}**  
+📊 {superior['record']} • {superior['puntos_totales']} pts • {superior['tipo']}  
+**🆚**  
+💥 **SEED #{inferior['posicion']} - {inferior['nombre']}**  
+📊 {inferior['record']} • {inferior['puntos_totales']} pts • {inferior['tipo']}""")
+                    else:
+                        st.info(f"""**⚡ PARTIDO {i+2}**  
+🥈 **SEED #{superior['posicion']} - {superior['nombre']}**  
+📊 {superior['record']} • {superior['puntos_totales']} pts • {superior['tipo']}  
+**🆚**  
+⚡ **SEED #{inferior['posicion']} - {inferior['nombre']}**  
+📊 {inferior['record']} • {inferior['puntos_totales']} pts • {inferior['tipo']}""")
+        
+        st.markdown("---")
         
         # Análisis de seeds
         col1, col2 = st.columns(2)
