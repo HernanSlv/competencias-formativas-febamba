@@ -209,17 +209,18 @@ def get_clasificados_por_zona(grupos, zona):
             equipo['tipo_clasificacion'] = "3º puesto"
             terceros.append(equipo)
     
-    # CORRECCIÓN: Ordenar correctamente por puntos, diferencia y puntos a favor
-    def sort_teams_correctly(teams):
+    # Función para ordenar por puntos, diferencia y puntos a favor
+    def sort_teams_by_points(teams):
         return sorted(teams, key=lambda x: (
             -x['puntos_totales'],                           # 1º criterio: puntos totales
             -(x['puntos_favor'] - x['puntos_contra']),      # 2º criterio: diferencia de puntos  
             -x['puntos_favor']                              # 3º criterio: puntos a favor
         ))
     
-    primeros = sort_teams_correctly(primeros)
-    segundos = sort_teams_correctly(segundos)
-    terceros = sort_teams_correctly(terceros)
+    # Ordenar cada categoría por separado
+    primeros_ordenados = sort_teams_by_points(primeros)
+    segundos_ordenados = sort_teams_by_points(segundos)
+    terceros_ordenados = sort_teams_by_points(terceros)
     
     # Determinar cuántos terceros clasifican según la zona
     if zona == "SUR":
@@ -227,13 +228,17 @@ def get_clasificados_por_zona(grupos, zona):
     else:
         terceros_clasifican = 4  # NORTE/CENTRO/OESTE: 6 zonas, 4 terceros
     
-    # Combinar clasificados manteniendo el orden correcto
-    clasificados = primeros + segundos + terceros[:terceros_clasifican]
+    # CORRECCIÓN: Mantener el orden jerárquico correcto
+    # 1º TODOS los primeros (ya ordenados por puntos)
+    # 2º TODOS los segundos (ya ordenados por puntos)  
+    # 3º Los mejores terceros (ya ordenados por puntos)
+    clasificados_finales = (
+        primeros_ordenados + 
+        segundos_ordenados + 
+        terceros_ordenados[:terceros_clasifican]
+    )
     
-    # Ordenar la lista final para crear el ranking 1-16 de toda la zona
-    clasificados_finales = sort_teams_correctly(clasificados)
-    
-    # Asignar posiciones finales de playoff (1-16)
+    # Asignar posiciones finales de playoff (1-16) manteniendo el orden jerárquico
     for i, equipo in enumerate(clasificados_finales):
         equipo['posicion_playoff'] = i + 1
     
@@ -504,7 +509,7 @@ def classify_teams_by_region(grupos, region_name):
     segundos = []
     terceros = []
     
-    # IMPORTANTE: Obtener equipos por posición en cada grupo PERO sin pre-ordenar
+    # Obtener equipos por posición en cada grupo
     for grupo in region_grupos:
         # Tomar clasificacion tal como viene del JSON (ya tiene las posiciones correctas por grupo)
         clasificacion = grupo['clasificacion']  
@@ -529,7 +534,7 @@ def classify_teams_by_region(grupos, region_name):
             equipo['zona'] = grupo['nombre'] 
             terceros.append(equipo)
     
-    # CORRECCIÓN CRÍTICA: Ordenar TODAS las listas por rendimiento real
+    # Función para ordenar por puntos (dentro de cada categoría)
     def sort_teams_by_performance(teams):
         return sorted(teams, key=lambda x: (
             -x['puntos_totales'],                           # 1º: Puntos totales (más puntos primero)
@@ -537,7 +542,7 @@ def classify_teams_by_region(grupos, region_name):
             -x['puntos_favor']                              # 3º: Puntos a favor (más puntos a favor primero)
         ))
     
-    # Aplicar ordenamiento a TODAS las categorías
+    # Ordenar cada categoría por separado (MANTENER JERARQUÍA)
     primeros_ordenados = sort_teams_by_performance(primeros)
     segundos_ordenados = sort_teams_by_performance(segundos)
     terceros_ordenados = sort_teams_by_performance(terceros)
