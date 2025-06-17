@@ -618,35 +618,35 @@
             {
               "posicion": 1,
               "equipo": "COMUNICACIONES",
-              "partidos_jugados": 11,
-              "partidos_ganados": 11,
+              "partidos_jugados": 12,
+              "partidos_ganados": 12,
               "partidos_perdidos": 0,
-              "puntos_favor": 1102,
-              "puntos_contra": 309,
-              "puntos_totales": 22,
-              "racha": 11
+              "puntos_favor": 1173,
+              "puntos_contra": 337,
+              "puntos_totales": 24,
+              "racha": 12
             },
             {
               "posicion": 2,
               "equipo": "CLUB 3 DE FEBRERO BLANCO A",
-              "partidos_jugados": 11,
-              "partidos_ganados": 10,
+              "partidos_jugados": 12,
+              "partidos_ganados": 11,
               "partidos_perdidos": 1,
-              "puntos_favor": 1137,
-              "puntos_contra": 516,
-              "puntos_totales": 21,
-              "racha": 5
+              "puntos_favor": 1250,
+              "puntos_contra": 570,
+              "puntos_totales": 23,
+              "racha": 6
             },
             {
               "posicion": 3,
               "equipo": "COPELLO",
-              "partidos_jugados": 11,
-              "partidos_ganados": 8,
+              "partidos_jugados": 13,
+              "partidos_ganados": 10,
               "partidos_perdidos": 3,
-              "puntos_favor": 762,
-              "puntos_contra": 665,
-              "puntos_totales": 19,
-              "racha": 3
+              "puntos_favor": 928,
+              "puntos_contra": 794,
+              "puntos_totales": 23,
+              "racha": 5
             },
             {
               "posicion": 4,
@@ -711,13 +711,13 @@
             {
               "posicion": 1,
               "equipo": "CLUB SPORTIVO ESCOBAR",
-              "partidos_jugados": 9,
-              "partidos_ganados": 9,
+              "partidos_jugados": 10,
+              "partidos_ganados": 10,
               "partidos_perdidos": 0,
-              "puntos_favor": 743,
-              "puntos_contra": 445,
-              "puntos_totales": 18,
-              "racha": 9
+              "puntos_favor": 837,
+              "puntos_contra": 475,
+              "puntos_totales": 20,
+              "racha": 10
             },
             {
               "posicion": 2,
@@ -733,13 +733,13 @@
             {
               "posicion": 3,
               "equipo": "CLUB SPORTIVO PILAR",
-              "partidos_jugados": 9,
-              "partidos_ganados": 7,
+              "partidos_jugados": 10,
+              "partidos_ganados": 8,
               "partidos_perdidos": 2,
-              "puntos_favor": 695,
-              "puntos_contra": 459,
-              "puntos_totales": 16,
-              "racha": 4
+              "puntos_favor": 766,
+              "puntos_contra": 515,
+              "puntos_totales": 18,
+              "racha": 5
             },
             {
               "posicion": 4,
@@ -793,35 +793,35 @@
             {
               "posicion": 1,
               "equipo": "OBRAS BASKET",
-              "partidos_jugados": 11,
-              "partidos_ganados": 11,
+              "partidos_jugados": 13,
+              "partidos_ganados": 13,
               "partidos_perdidos": 0,
-              "puntos_favor": 1113,
-              "puntos_contra": 495,
-              "puntos_totales": 22,
-              "racha": 11
+              "puntos_favor": 1288,
+              "puntos_contra": 591,
+              "puntos_totales": 26,
+              "racha": 13
             },
             {
               "posicion": 2,
               "equipo": "RIVER PLATE",
-              "partidos_jugados": 11,
-              "partidos_ganados": 8,
+              "partidos_jugados": 12,
+              "partidos_ganados": 9,
               "partidos_perdidos": 3,
-              "puntos_favor": 786,
-              "puntos_contra": 566,
-              "puntos_totales": 19,
-              "racha": 2
+              "puntos_favor": 842,
+              "puntos_contra": 619,
+              "puntos_totales": 21,
+              "racha": 3
             },
             {
               "posicion": 3,
               "equipo": "PLATENSE A",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 8,
-              "partidos_perdidos": 2,
-              "puntos_favor": 720,
-              "puntos_contra": 577,
-              "puntos_totales": 18,
-              "racha": -1
+              "partidos_perdidos": 3,
+              "puntos_favor": 770,
+              "puntos_contra": 675,
+              "puntos_totales": 19,
+              "racha": -2
             },
             {
               "posicion": 4,
@@ -886,35 +886,35 @@
             {
               "posicion": 1,
               "equipo": "BANADE ROJO",
-              "partidos_jugados": 12,
+              "partidos_jugados": 13,
               "partidos_ganados": 12,
-              "partidos_perdidos": 0,
-              "puntos_favor": 1038,
-              "puntos_contra": 552,
-              "puntos_totales": 24,
-              "racha": 12
+              "partidos_perdidos": 1,
+              "puntos_favor": 1106,
+              "puntos_contra": 639,
+              "puntos_totales": 25,
+              "racha": -1
             },
             {
               "posicion": 2,
               "equipo": "SOC.BECCAR",
-              "partidos_jugados": 12,
-              "partidos_ganados": 10,
-              "partidos_perdidos": 2,
-              "puntos_favor": 1013,
-              "puntos_contra": 616,
-              "puntos_totales": 22,
-              "racha": 1
+              "partidos_jugados": 14,
+              "partidos_ganados": 11,
+              "partidos_perdidos": 3,
+              "puntos_favor": 1190,
+              "puntos_contra": 710,
+              "puntos_totales": 25,
+              "racha": -1
             },
             {
               "posicion": 3,
               "equipo": "UNION VECINAL DE MUNRO",
-              "partidos_jugados": 12,
-              "partidos_ganados": 7,
+              "partidos_jugados": 13,
+              "partidos_ganados": 8,
               "partidos_perdidos": 5,
-              "puntos_favor": 816,
-              "puntos_contra": 672,
-              "puntos_totales": 19,
-              "racha": -1
+              "puntos_favor": 903,
+              "puntos_contra": 740,
+              "puntos_totales": 21,
+              "racha": 1
             },
             {
               "posicion": 4,
@@ -979,35 +979,35 @@
             {
               "posicion": 1,
               "equipo": "SAN FERNANDO AZUL (A)",
-              "partidos_jugados": 11,
-              "partidos_ganados": 10,
+              "partidos_jugados": 14,
+              "partidos_ganados": 13,
               "partidos_perdidos": 1,
-              "puntos_favor": 802,
-              "puntos_contra": 521,
-              "puntos_totales": 21,
-              "racha": 2
+              "puntos_favor": 1079,
+              "puntos_contra": 637,
+              "puntos_totales": 27,
+              "racha": 4
             },
             {
               "posicion": 2,
               "equipo": "C S D PRESIDENTE DERQUI",
-              "partidos_jugados": 11,
-              "partidos_ganados": 10,
+              "partidos_jugados": 14,
+              "partidos_ganados": 13,
               "partidos_perdidos": 1,
-              "puntos_favor": 860,
-              "puntos_contra": 565,
-              "puntos_totales": 21,
-              "racha": 8
+              "puntos_favor": 1100,
+              "puntos_contra": 708,
+              "puntos_totales": 27,
+              "racha": 10
             },
             {
               "posicion": 3,
               "equipo": "CAZA Y PESCA AZUL A",
-              "partidos_jugados": 11,
-              "partidos_ganados": 8,
-              "partidos_perdidos": 3,
-              "puntos_favor": 981,
-              "puntos_contra": 547,
-              "puntos_totales": 19,
-              "racha": -1
+              "partidos_jugados": 14,
+              "partidos_ganados": 9,
+              "partidos_perdidos": 5,
+              "puntos_favor": 1202,
+              "puntos_contra": 737,
+              "puntos_totales": 23,
+              "racha": 1
             },
             {
               "posicion": 4,
@@ -1072,46 +1072,46 @@
             {
               "posicion": 1,
               "equipo": "CAZA Y PESCA BLANCO B",
-              "partidos_jugados": 12,
-              "partidos_ganados": 12,
+              "partidos_jugados": 13,
+              "partidos_ganados": 13,
               "partidos_perdidos": 0,
-              "puntos_favor": 977,
-              "puntos_contra": 471,
-              "puntos_totales": 24,
-              "racha": 12
+              "puntos_favor": 1043,
+              "puntos_contra": 497,
+              "puntos_totales": 26,
+              "racha": 13
             },
             {
               "posicion": 2,
               "equipo": "PLATENSE B",
-              "partidos_jugados": 11,
+              "partidos_jugados": 12,
               "partidos_ganados": 10,
-              "partidos_perdidos": 1,
-              "puntos_favor": 686,
-              "puntos_contra": 443,
-              "puntos_totales": 21,
-              "racha": 5
+              "partidos_perdidos": 2,
+              "puntos_favor": 712,
+              "puntos_contra": 509,
+              "puntos_totales": 22,
+              "racha": -1
             },
             {
               "posicion": 3,
               "equipo": "SAN FERNANDO BLANCO (B)",
-              "partidos_jugados": 11,
-              "partidos_ganados": 7,
+              "partidos_jugados": 13,
+              "partidos_ganados": 9,
               "partidos_perdidos": 4,
-              "puntos_favor": 623,
-              "puntos_contra": 553,
-              "puntos_totales": 18,
-              "racha": -1
+              "puntos_favor": 758,
+              "puntos_contra": 620,
+              "puntos_totales": 22,
+              "racha": 1
             },
             {
               "posicion": 4,
               "equipo": "CIUDAD DE BUENOS AIRES BLANCO B",
-              "partidos_jugados": 11,
-              "partidos_ganados": 6,
+              "partidos_jugados": 12,
+              "partidos_ganados": 7,
               "partidos_perdidos": 5,
-              "puntos_favor": 654,
-              "puntos_contra": 615,
-              "puntos_totales": 17,
-              "racha": -1
+              "puntos_favor": 725,
+              "puntos_contra": 653,
+              "puntos_totales": 19,
+              "racha": 1
             },
             {
               "posicion": 5,
