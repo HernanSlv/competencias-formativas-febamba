@@ -136,6 +136,182 @@ st.markdown("""
     color: #dc3545;
     font-weight: bold;
 }
+
+/* Estilos para el bracket de playoffs */
+.bracket-container {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.bracket-round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 600px;
+    margin: 0 1rem;
+}
+
+.bracket-game {
+    background: white;
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.bracket-game:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.25);
+}
+
+.game-header {
+    text-align: center;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bracket-team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin: 0.25rem 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.bracket-team:hover {
+    transform: scale(1.02);
+}
+
+.team-seed-1-4 {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border-left: 4px solid #155724;
+}
+
+.team-seed-5-8 {
+    background: linear-gradient(135deg, #17a2b8, #6f42c1);
+    color: white;
+    border-left: 4px solid #0c5460;
+}
+
+.team-seed-9-12 {
+    background: linear-gradient(135deg, #ffc107, #fd7e14);
+    color: #212529;
+    border-left: 4px solid #856404;
+}
+
+.team-seed-13-16 {
+    background: linear-gradient(135deg, #dc3545, #e83e8c);
+    color: white;
+    border-left: 4px solid #721c24;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.team-name {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.team-details {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.team-seed {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+    min-width: 2rem;
+    text-align: center;
+    margin-right: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.bracket-vs {
+    text-align: center;
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.1rem;
+    margin: 0.25rem 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.round-title {
+    text-align: center;
+    background: linear-gradient(135deg, #6f42c1, #e83e8c);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+}
+
+.future-round {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0.5rem 0;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.champion-spot {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #212529;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    border: 3px solid #ffc107;
+}
+
+.playoff-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3) !important;
+}
+
+.playoff-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4) !important;
+    background: linear-gradient(135deg, #c0392b, #a93226) !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -682,6 +858,26 @@ def show_region_details(grupos, region_name):
     
     primeros, segundos, terceros = classify_teams_by_region(grupos, region_name)
     
+    # Botón para ver playoffs de la región
+    col1, col2 = st.columns([3, 1])
+    with col2:
+        if st.button(f"🏆 Ver Playoffs {region_name.upper()}", key=f"playoff_btn_{region_name}", 
+                    help="Ver bracket completo de playoffs para esta región"):
+            
+            # Obtener clasificados para playoffs
+            clasificados = get_clasificados_por_zona(grupos, region_name.upper())
+            
+            if len(clasificados) >= 16:
+                # Crear modal con el bracket
+                with st.container():
+                    st.markdown("---")
+                    enfrentamientos = generate_playoff_matchups(clasificados)
+                    if enfrentamientos:
+                        show_playoff_bracket_modal(enfrentamientos, region_name.upper())
+                    st.markdown("---")
+            else:
+                st.error(f"⚠️ No hay suficientes equipos clasificados en {region_name.upper()} para generar playoffs completos ({len(clasificados)}/16)")
+    
     with st.expander("📋 Sistema de Clasificación", expanded=False):
         if region_name.upper() == "SUR":
             st.info("**SUR (7 zonas):** Los 2 mejores de cada zona + los 2 mejores 3eros = 16 clasificados")
@@ -767,7 +963,7 @@ def main():
     # Selector de sección principal
     seccion_principal = st.sidebar.radio(
         "Sección Principal:",
-        ["📊 Clasificaciones", "🏆 Playoffs"]
+        ["📊 Clasificaciones"]
     )
     
     if seccion_principal == "📊 Clasificaciones":
@@ -799,9 +995,6 @@ def main():
         else:
             region_name = region_view.replace("📍 ", "")
             show_region_details(grupos, region_name)
-    
-    elif seccion_principal == "🏆 Playoffs":
-        show_playoffs_section(categoria_data, None)
 
 if __name__ == "__main__":
     main()
